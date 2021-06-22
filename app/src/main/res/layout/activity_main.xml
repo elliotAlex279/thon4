@@ -7,105 +7,115 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <TableLayout
+        android:stretchColumns="1"
         android:id="@+id/PrimaryDiv1"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-    <com.google.android.material.card.MaterialCardView
-        android:clickable="true"
-        app:cardCornerRadius="28dp"
-        android:id="@+id/sunrise_card"
-        android:background="@drawable/sunsrise_bg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="220dp"
+<TableRow>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/sunrise_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/sunsrise_bg"
-            android:layout_height="175dp"
-            android:orientation="vertical">
+            android:clickable="true"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            app:cardCornerRadius="28dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sunrise"
-                    android:textColor="@color/white"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    />
-                <TextView android:id="@+id/hey"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="6 : 45"
-                    android:textColor="@color/white"
-                    android:textAppearance="?attr/textAppearanceHeadline3"
-                    />
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
-            android:clickable="true"
-            android:id="@+id/weather_card"
-            android:layout_marginLeft="16dp"
-            app:cardCornerRadius="28dp"
-            app:cardBackgroundColor="@color/sec"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="145dp"
                 android:layout_height="175dp"
-                android:gravity="center"
+                android:background="@drawable/sunsrise_bg"
                 android:orientation="vertical">
-                <ProgressBar
-                    android:id="@+id/loaderWeather"
-                    android:indeterminateTint="@color/white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <RelativeLayout
-                    android:id="@+id/loadedWeather"
-                    android:visibility="gone"
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="16dp">
-                    <ImageView
-                        android:id="@+id/curTempImg"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="75dp"/>
-                    <TextView android:id="@+id/temp_curr"
-                        android:layout_below="@id/curTempImg"
-                        android:layout_centerHorizontal="true"
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:textAppearance="?attr/textAppearanceHeadline4"
-                        />
-                    <TextView android:id="@+id/temp_stat"
+                        android:text="Sunrise"
+                        android:textAppearance="?attr/textAppearanceHeadline6"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/hey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="@color/white"
-                        android:textSize="16dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        />
-                </RelativeLayout>
+                        android:text="6 : 45"
+                        android:textAppearance="?attr/textAppearanceHeadline3"
+                        android:textColor="@color/white" />
+                </LinearLayout>
 
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
-    </LinearLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/weather_card"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:clickable="true"
+            app:cardBackgroundColor="@color/sec"
+            app:cardCornerRadius="28dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ProgressBar
+                    android:id="@+id/loaderWeather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminateTint="@color/white" />
+
+                <RelativeLayout
+                    android:id="@+id/loadedWeather"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/curTempImg"
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp"
+                        android:layout_gravity="center_horizontal" />
+
+                    <TextView
+                        android:id="@+id/temp_curr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/curTempImg"
+                        android:layout_centerHorizontal="true"
+                        android:textAppearance="?attr/textAppearanceHeadline4"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/temp_stat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/white"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+</TableRow>
+    </TableLayout>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_alignParentBottom="true"
