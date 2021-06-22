@@ -7,8 +7,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.card.MaterialCardView
+    <LinearLayout
         android:id="@+id/card"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:clickable="true"
+        app:cardCornerRadius="28dp"
         android:background="@drawable/sunsrise_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -43,6 +50,60 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:clickable="true"
+            android:layout_marginLeft="16dp"
+            app:cardCornerRadius="28dp"
+            app:cardBackgroundColor="#4863C5"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="128dp"
+                android:layout_height="175dp"
+                android:gravity="center"
+                android:orientation="vertical">
+                <ProgressBar
+                    android:id="@+id/loaderWeather"
+                    android:indeterminateTint="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <RelativeLayout
+                    android:id="@+id/loadedWeather"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <ImageView
+                        android:id="@+id/curTempImg"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp"/>
+                    <TextView android:id="@+id/temp_curr"
+                        android:layout_below="@id/curTempImg"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textAppearance="?attr/textAppearanceHeadline4"
+                        />
+                    <TextView android:id="@+id/temp_stat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
     <TextView
         android:id="@+id/ktp"
         android:layout_below="@id/card"
