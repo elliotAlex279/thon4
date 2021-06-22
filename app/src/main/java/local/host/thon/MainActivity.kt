@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 //        Log.d("K","https://api.sunrise-sunset.org/json?lat=${location["latitude"]}&lng=${location["longitude"]}");
 //        var dtp = Date().formatTo("yyyy-MM-dd")
         val dtp ="${(dt["current"] as JSONObject)["temp_c"]}"
-        findViewById<TextView>(R.id.ktp).text = dtp
+        findViewById<TextView>(R.id.hey).text = dtp
 
     }
 
