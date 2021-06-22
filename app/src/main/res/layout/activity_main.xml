@@ -9,74 +9,33 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:background="@drawable/sunsrise_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="230dp"
+            android:background="@drawable/sunsrise_bg"
+            android:layout_height="175dp"
             android:orientation="vertical">
-
-            <!-- Media -->
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="194dp"
-                app:srcCompat="@drawable/ajit_singh_wjwx_jsgzua_unsplash"
-                android:scaleType="centerCrop"
-                android:contentDescription="AlwaysSmile"
-                />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="16dp">
-
-                <!-- Title, secondary and supporting text -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sunrise"
+                    android:textColor="@color/white"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    />
                 <TextView android:id="@+id/hey"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ICT"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="LegendRuler"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="galudiyu"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
-                    />
-
-            </LinearLayout>
-
-            <!-- Buttons -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="horizontal">
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:text="jashi"
-                    style="?attr/borderlessButtonStyle"
-                    />
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="hack4.0"
-                    style="?attr/borderlessButtonStyle"
+                    android:text="6 : 45"
+                    android:textColor="@color/white"
+                    android:textAppearance="?attr/textAppearanceHeadline3"
                     />
             </LinearLayout>
 
