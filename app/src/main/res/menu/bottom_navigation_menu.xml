@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/page_1"
+        android:enabled="true"
+        android:title="Home"
+        android:icon="@drawable/ic_outline_home_24"/>
+    <item
+        android:id="@+id/page_2"
+        android:enabled="true"
+        android:title="Past Data"
+        android:icon="@drawable/ic_baseline_history_toggle_off_24"/>
+    <item
+        android:id="@+id/page_3"
+        android:enabled="true"
+        android:title="Estimate"
+        android:icon="@drawable/ic_baseline_query_stats_24"/>
+    <item
+        android:id="@+id/page_4"
+        android:enabled="true"
+        android:title="Account"
+        android:icon="@drawable/ic_outline_account_circle_24"/>
+</menu>
