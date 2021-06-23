@@ -168,13 +168,13 @@
         app:cardBackgroundColor="#F06292"
         app:cardElevation="5dp"
         android:clickable="false"
-        android:layout_height="wrap_content"
+        android:layout_height="140dp"
         android:layout_marginTop="16dp">
         <LinearLayout
             android:orientation="vertical"
             android:padding="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
                 <TextView
                     android:layout_gravity="center"
                     android:textColor="@color/white"
@@ -194,7 +194,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <ProgressBar
-                android:layout_marginVertical="8dp"
+                android:layout_marginVertical="16dp"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -221,7 +221,7 @@
                 app:cardBackgroundColor="#7e57c2"
                 app:cardElevation="5dp"
                 android:clickable="false"
-                android:layout_height="wrap_content"
+                android:layout_height="140dp"
                 android:layout_marginTop="16dp">
                 <LinearLayout
                     android:orientation="vertical"
@@ -240,14 +240,14 @@
                     <TextView
                         android:visibility="gone"
                         android:gravity="center"
-                        android:padding="25dp"
+                        android:padding="24dp"
                         android:id="@+id/tot_unit_gen"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textColor="@color/white"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                     <ProgressBar
-                        android:layout_marginVertical="8dp"
+                        android:layout_marginVertical="16dp"
                         android:layout_gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

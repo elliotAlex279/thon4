@@ -31,8 +31,6 @@ import android.media.MediaPlayer
 
 
 
-
-@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         var active: Fragment = fragment[0]
 
         fm.beginTransaction().add(R.id.main_container, fragment[3], "4").hide(fragment[3]).commit();
-        fm.beginTransaction().add(R.id.main_container, fragment[2], "2").hide(fragment[2]).commit();
+        fm.beginTransaction().add(R.id.main_container, fragment[2], "3").hide(fragment[2]).commit();
         fm.beginTransaction().add(R.id.main_container, fragment[1], "2").hide(fragment[1]).commit();
         fm.beginTransaction().add(R.id.main_container,fragment[0], "1").commit();
         val mPlayer: MediaPlayer = MediaPlayer.create(this, R.raw.sjli)
