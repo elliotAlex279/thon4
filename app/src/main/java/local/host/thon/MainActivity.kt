@@ -3,7 +3,6 @@ package local.host.thon
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import java.net.URL
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import android.view.View
@@ -22,15 +21,11 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n", "SimpleDateFormat", "CutPasteId")
     private fun checkWeather(){
-//        val publicIP = (URL("http://www.checkip.org").readText().split("<span style=\"color: #5d9bD3;\">")[1]).split("</span>")[0]
-//        val location = JSONObject(URL("http://api.ipstack.com/$publicIP?access_key=d8d57e041b8d5da9101ba4fbde602b6b").readText());
-//        val dt = JSONObject(URL("http://api.weatherapi.com/v1/current.json?key=b0b2771b21d540478e565638212206&q=${location["latitude"]},${location["longitude"]}&aqi=no").readText())
-//        val jobj = ((dt["current"] as JSONObject)["condition"] as JSONObject)
-//        val dtp = arrayOf("${(dt["current"] as JSONObject)["temp_c"]}","${jobj["text"]}");
         val queue = Volley.newRequestQueue(this)
         val url = "http://www.checkip.org"
 
@@ -77,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                             { responseB ->
                                 val dt = JSONObject(responseB)
                                 val jobj = ((dt["current"] as JSONObject)["condition"] as JSONObject)
-                                val dtp = arrayOf("${(dt["current"] as JSONObject)["temp_c"]}","${jobj["text"]}");
+                                val dtp = arrayOf("${(dt["current"] as JSONObject)["temp_c"]}","${jobj["text"]}")
                                 Picasso.get()
                                     .load("https:${jobj["icon"]}")
                                     .into(findViewById(R.id.curTempImg), object : Callback {
@@ -98,7 +93,7 @@ class MainActivity : AppCompatActivity() {
                                         override fun onError(e: Exception?) {
                                             Toast.makeText(this@MainActivity,"Internet is off :( ",Toast.LENGTH_SHORT).show()
                                         }
-                                    });
+                                    })
                             }, {})
                         queue.add(stringRequest31)
                         queue.add(stringRequest3)
@@ -118,9 +113,9 @@ class MainActivity : AppCompatActivity() {
         StrictMode.setThreadPolicy(policy)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val publicIP = (URL("http://www.checkip.org").readText().split("<span style=\"color: #5d9bD3;\">")[1]).split("</span>")[0]
-        val location = JSONObject(URL("http://api.ipstack.com/$publicIP?access_key=d8d57e041b8d5da9101ba4fbde602b6b").readText());
-        val dt = JSONObject(URL("http://api.weatherapi.com/v1/current.json?key=b0b2771b21d540478e565638212206&q=${location["latitude"]},${location["longitude"]}&aqi=no").readText())
+//        val publicIP = (URL("http://www.checkip.org").readText().split("<span style=\"color: #5d9bD3;\">")[1]).split("</span>")[0]
+//        val location = JSONObject(URL("http://api.ipstack.com/$publicIP?access_key=d8d57e041b8d5da9101ba4fbde602b6b").readText())
+//        val dt = JSONObject(URL("http://api.weatherapi.com/v1/current.json?key=b0b2771b21d540478e565638212206&q=${location["latitude"]},${location["longitude"]}&aqi=no").readText())
 //        Log.d("K","https://api.sunrise-sunset.org/json?lat=${location["latitude"]}&lng=${location["longitude"]}");
 //        var dtp = Date().formatTo("yyyy-MM-dd")
 
@@ -133,18 +128,6 @@ class MainActivity : AppCompatActivity() {
             checkWeather()
         }
 
-    }
-
-    private fun String.toDate(dateFormat: String = "yyyy-MM-dd HH:mm:ss", timeZone: TimeZone = TimeZone.getTimeZone("UTC")): Date {
-        val parser = SimpleDateFormat(dateFormat, Locale.getDefault())
-        parser.timeZone = timeZone
-        return parser.parse(this)!!
-    }
-
-    private fun Date.formatTo(dateFormat: String, timeZone: TimeZone = TimeZone.getDefault()): String {
-        val formatter = SimpleDateFormat(dateFormat, Locale.getDefault())
-        formatter.timeZone = timeZone
-        return formatter.format(this)
     }
 
 }
