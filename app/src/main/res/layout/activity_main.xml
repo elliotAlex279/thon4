@@ -33,7 +33,7 @@
             android:stretchColumns="3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TableRow>
+            <TableRow tools:ignore="UselessParent">
 
                 <LinearLayout
                     android:orientation="vertical"
@@ -45,7 +45,8 @@
                         android:id="@+id/curTempImg"
                         android:layout_gravity="center"
                         android:layout_width="70dp"
-                        android:layout_height="70dp"/>
+                        android:layout_height="70dp"
+                        android:contentDescription="@string/app_name" />
 
                     <TextView
                         android:id="@+id/temp_curr"
@@ -83,7 +84,8 @@
                             android:textSize="18sp"
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            tools:ignore="RtlSymmetry" />
                         <ProgressBar
                             android:layout_weight="1"
                             android:id="@+id/sunrise_loader"
@@ -101,7 +103,8 @@
                             android:id="@+id/sunset_time"
                             android:layout_weight="1"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            tools:ignore="RtlSymmetry" />
                         <ProgressBar
                             android:id="@+id/sunset_loader"
                             android:indeterminateTint="@color/white"
@@ -119,7 +122,8 @@
                                 android:textSize="18sp"
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content"
+                                tools:ignore="RtlSymmetry" />
                             <ProgressBar
                                 android:layout_weight="1"
                                 android:id="@+id/hum_loader"
@@ -137,7 +141,8 @@
                                 android:id="@+id/uv_text"
                                 android:layout_weight="1"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content"
+                                tools:ignore="RtlSymmetry" />
                             <ProgressBar
                                 android:id="@+id/uv_loader"
                                 android:indeterminateTint="@color/white"
@@ -146,14 +151,6 @@
                                 android:layout_height="18dp" />
                         </TableRow>
                     </TableLayout>
-                    <LinearLayout
-                        android:layout_marginTop="8dp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                    </LinearLayout>
                 </LinearLayout>
             </TableRow>
         </TableLayout>
