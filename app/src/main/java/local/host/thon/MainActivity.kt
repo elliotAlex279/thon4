@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                                             findViewById<TextView>(R.id.temp_curr).text = dtp[0].toFloat().toInt().toString() + "°C"
                                             findViewById<TextView>(R.id.temp_stat).text = dtp[1]
                                             findViewById<ProgressBar>(R.id.loaderWeather).visibility = View.GONE
-                                            findViewById<RelativeLayout>(R.id.loadedWeather).visibility = View.VISIBLE
+                                            findViewById<LinearLayout>(R.id.loadedWeather).visibility = View.VISIBLE
                                         }
 
                                         override fun onError(e: Exception?) {
@@ -111,7 +111,7 @@ class MainActivity : AppCompatActivity() {
 
         checkWeather()
         findViewById<CardView>(R.id.weather_card).setOnClickListener {
-            findViewById<RelativeLayout>(R.id.loadedWeather).visibility = View.GONE
+            findViewById<LinearLayout>(R.id.loadedWeather).visibility = View.GONE
             findViewById<ProgressBar>(R.id.loaderWeather).visibility = View.VISIBLE
             checkWeather()
         }
