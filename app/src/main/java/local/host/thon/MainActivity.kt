@@ -38,9 +38,10 @@ class MainActivity : AppCompatActivity() {
         val fragment1: Fragment = Home()
         val fragment = arrayOf(Home(),Summary(),Estimate(),Profile())
         val fragment4: Fragment = Profile()
-        val fm: FragmentManager = supportFragmentManager
-        var active: Fragment = fragment[0]
+//        getActivity().getSupportFragmentManager().beginTransaction();
 
+        val fm: FragmentManager = this.supportFragmentManager
+        var active: Fragment = fragment[0]
         fm.beginTransaction().add(R.id.main_container, fragment[3], "4").hide(fragment[3]).commit();
         fm.beginTransaction().add(R.id.main_container, fragment[2], "3").hide(fragment[2]).commit();
         fm.beginTransaction().add(R.id.main_container, fragment[1], "2").hide(fragment[1]).commit();
