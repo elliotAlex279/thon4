@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:padding="16dp"
+    android:background="@color/bg"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -11,15 +12,14 @@
         android:layout_width="match_parent"
         android:id="@+id/weather_card"
         app:cardBackgroundColor="@color/teal_500"
-        app:cardCornerRadius="18dp"
-        app:strokeColor="@color/grey"
-        app:strokeWidth="1.5dp"
+        app:cardCornerRadius="9dp"
         app:cardElevation="5dp"
         android:clickable="true"
         android:layout_height="wrap_content">
         <ProgressBar
             android:layout_margin="28dp"
             android:id="@+id/loaderWeather"
+            android:visibility="visible"
             android:indeterminateTint="@color/white"
             android:layout_weight="1"
             android:layout_gravity="center"
@@ -49,15 +49,13 @@
 
                     <TextView
                         android:id="@+id/temp_curr"
-                        android:textSize="22dp"
+                        android:textSize="22sp"
                         android:textColor="@color/white"
-                        android:text="55"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
                         android:id="@+id/temp_stat"
-                        android:textSize="12.5dp"
-                        android:text="55"
+                        android:textSize="12.5sp"
                         android:layout_marginBottom="8dp"
                         android:textColor="@color/white"
                         android:layout_width="wrap_content"
@@ -66,64 +64,95 @@
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="0dp"
-                    android:gravity="center"
+                    android:paddingVertical="8dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2">
-                    <LinearLayout
-                        android:gravity="center"
-                        android:layout_marginBottom="8dp"
+                    <TableLayout
+                        android:stretchColumns="1"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:gravity="center"
+                        android:layout_height="match_parent">
+                        <TableRow android:layout_gravity="top" android:layout_marginBottom="4dp">
                         <TextView
-                            android:textStyle="bold"
-                            android:textColor="@color/white"
-                            android:text="Sunrise"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"/>
-                        <TextView
+                            android:gravity="center"
                             android:textColor="@color/white"
                             android:visibility="gone"
                             android:paddingStart="8dp"
                             android:id="@+id/sunrise_time"
-                            android:layout_width="wrap_content"
+                            android:textSize="18sp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"/>
                         <ProgressBar
+                            android:layout_weight="1"
                             android:id="@+id/sunrise_loader"
-                            android:layout_marginLeft="15dp"
                             android:indeterminateTint="@color/white"
-                            android:layout_width="12dp"
-                            android:layout_height="12dp" />
-                    </LinearLayout>
+                            android:layout_width="0dp"
+                            android:layout_height="18dp" />
+
+
+                        <TextView
+                            android:gravity="center"
+                            android:textColor="@color/white"
+                            android:visibility="gone"
+                            android:paddingStart="8dp"
+                            android:textSize="18sp"
+                            android:id="@+id/sunset_time"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"/>
+                        <ProgressBar
+                            android:id="@+id/sunset_loader"
+                            android:indeterminateTint="@color/white"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="18dp" />
+                    </TableRow>
+                        <TableRow android:layout_gravity="bottom" android:layout_marginTop="4dp">
+                            <TextView
+                                android:gravity="center"
+                                android:textColor="@color/white"
+                                android:visibility="gone"
+                                android:paddingStart="8dp"
+                                android:id="@+id/hum_data"
+                                android:textSize="18sp"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"/>
+                            <ProgressBar
+                                android:layout_weight="1"
+                                android:id="@+id/hum_loader"
+                                android:indeterminateTint="@color/white"
+                                android:layout_width="0dp"
+                                android:layout_height="18dp" />
+
+
+                            <TextView
+                                android:gravity="center"
+                                android:textColor="@color/white"
+                                android:visibility="gone"
+                                android:paddingStart="8dp"
+                                android:textSize="18sp"
+                                android:id="@+id/uv_text"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"/>
+                            <ProgressBar
+                                android:id="@+id/uv_loader"
+                                android:indeterminateTint="@color/white"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="18dp" />
+                        </TableRow>
+                    </TableLayout>
                     <LinearLayout
                         android:layout_marginTop="8dp"
                         android:gravity="center"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-                        <TextView
-                            android:textStyle="bold"
-                            android:textColor="@color/white"
-                            android:text="Sunset"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"/>
 
-                        <TextView
-                            android:textColor="@color/white"
-                            android:visibility="gone"
-                            android:paddingStart="8dp"
-                            android:textSize="20dp"
-                            android:id="@+id/sunset_time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                        <ProgressBar
-                            android:id="@+id/sunset_loader"
-                            android:layout_marginLeft="15dp"
-                            android:indeterminateTint="@color/white"
-                            android:layout_width="12dp"
-                            android:layout_height="12dp" />
                     </LinearLayout>
                 </LinearLayout>
             </TableRow>
@@ -131,29 +160,29 @@
     </com.google.android.material.card.MaterialCardView>
 
 
-
     <com.google.android.material.card.MaterialCardView
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        app:cardCornerRadius="50dp"
-        app:strokeWidth="1.25dp"
-        app:cardBackgroundColor="@color/tur"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="28dp"
         android:layout_marginBottom="8dp"
         android:elevation="0dp"
+        app:cardBackgroundColor="@color/bg"
+        app:cardCornerRadius="50dp"
         app:cardElevation="0dp"
         app:strokeColor="#BBBBBB"
-        android:layout_marginHorizontal="28dp"
-        android:layout_height="wrap_content">
+        app:strokeWidth="1.25dp">
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
-            app:elevation="0dp"
-            app:backgroundTint="#000000FF"
-            android:layout_margin="8dp"
-            app:itemRippleColor="#000000FF"
-            android:elevation="0dp"
-            android:clickable="false"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:clickable="false"
+            android:elevation="0dp"
+            app:backgroundTint="#000000FF"
+            app:elevation="0dp"
+            app:itemRippleColor="#000000FF"
             app:menu="@menu/bottom_navigation_menu" />
 
     </com.google.android.material.card.MaterialCardView>

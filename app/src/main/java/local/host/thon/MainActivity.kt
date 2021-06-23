@@ -14,6 +14,7 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.cardview.widget.CardView
+import androidx.core.text.HtmlCompat
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         return formatter.format(calendar.time)
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "SimpleDateFormat")
     private fun checkWeather(){
 //        val publicIP = (URL("http://www.checkip.org").readText().split("<span style=\"color: #5d9bD3;\">")[1]).split("</span>")[0]
 //        val location = JSONObject(URL("http://api.ipstack.com/$publicIP?access_key=d8d57e041b8d5da9101ba4fbde602b6b").readText());
@@ -62,6 +63,30 @@ class MainActivity : AppCompatActivity() {
                     { responseA ->
                         val location = JSONObject(responseA);
                         val url3 = "http://api.weatherapi.com/v1/current.json?key=b0b2771b21d540478e565638212206&q=${location["latitude"]},${location["longitude"]}&aqi=no"
+
+                        val url4 = "https://api.sunrise-sunset.org/json?lat=${location["latitude"]}&lng=${location["longitude"]}"
+                        val stringRequest31 = StringRequest(
+                            Request.Method.GET, url4,
+                            { responseB1 ->
+                                val obj = JSONObject(responseB1);
+                                val k = obj["results"] as JSONObject;
+                                val dateFormat: DateFormat = SimpleDateFormat("dd/MM/yyyy")
+                                val dateFormatA: DateFormat = SimpleDateFormat("h:mm")
+                                val date = Date()
+                                val dtn = Date(dateFormat.format(date) + " ${k["sunrise"]}");
+                                val dtn2 = Date(dateFormat.format(date) + " ${k["sunset"]}");
+//                                Log.d("K",dtn.time.toString())
+                                val nsr = Date(dtn.time + 330*60000)
+
+                                findViewById<TextView>(R.id.sunrise_time).text = HtmlCompat.fromHtml("<b>Sunrise</b><br>${dateFormatA.format(nsr)}",HtmlCompat.FROM_HTML_MODE_COMPACT);
+                                findViewById<ProgressBar>(R.id.sunrise_loader).visibility = View.GONE
+                                findViewById<TextView>(R.id.sunrise_time).visibility = View.VISIBLE
+                                val nss = Date(dtn2.time + 330*60000)
+                                findViewById<TextView>(R.id.sunset_time).text = HtmlCompat.fromHtml("<b>Sunset</b><br>${dateFormatA.format(nss)}",HtmlCompat.FROM_HTML_MODE_COMPACT);
+                                findViewById<ProgressBar>(R.id.sunset_loader).visibility = View.GONE
+                                findViewById<TextView>(R.id.sunset_time).visibility = View.VISIBLE
+//                                Toast.makeText(this,Date(dateFormat.format(date) + " " +k["sunrise"].toString()).toLocaleString(),Toast.LENGTH_SHORT).show()
+                            },{})
                         val stringRequest3 = StringRequest(
                             Request.Method.GET, url3,
                             { responseB ->
@@ -75,6 +100,12 @@ class MainActivity : AppCompatActivity() {
                                         override fun onSuccess() {
                                             findViewById<TextView>(R.id.temp_curr).text = dtp[0].toFloat().toInt().toString() + "°C"
                                             findViewById<TextView>(R.id.temp_stat).text = dtp[1]
+                                            findViewById<TextView>(R.id.hum_data).text = HtmlCompat.fromHtml("<b>Humidity</b><br>${(dt["current"] as JSONObject)["humidity"]}",HtmlCompat.FROM_HTML_MODE_COMPACT)
+                                            findViewById<TextView>(R.id.uv_text).text = HtmlCompat.fromHtml("<b>UV Index</b><br>${(dt["current"] as JSONObject)["uv"]}",HtmlCompat.FROM_HTML_MODE_COMPACT)
+                                            findViewById<TextView>(R.id.hum_data).visibility = View.VISIBLE
+                                            findViewById<TextView>(R.id.uv_text).visibility = View.VISIBLE
+                                            findViewById<ProgressBar>(R.id.hum_loader).visibility = View.GONE
+                                            findViewById<ProgressBar>(R.id.uv_loader).visibility = View.GONE
                                             findViewById<ProgressBar>(R.id.loaderWeather).visibility = View.GONE
                                             findViewById<LinearLayout>(R.id.loadedWeather).visibility = View.VISIBLE
                                         }
@@ -84,6 +115,7 @@ class MainActivity : AppCompatActivity() {
                                         }
                                     });
                             }, {})
+                        queue.add(stringRequest31)
                         queue.add(stringRequest3)
                         // Display the first 500 characters of the response string.
                     },
