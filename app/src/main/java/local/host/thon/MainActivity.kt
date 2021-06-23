@@ -52,25 +52,27 @@ class MainActivity : AppCompatActivity() {
             bottomNav.setOnNavigationItemSelectedListener{ item ->
                 when (item.itemId) {
                     R.id.nav_home -> {
-                        fm.beginTransaction().hide(active).show(fragment[0]).commit()
+                        fm.beginTransaction().replace(R.id.main_container,Home()).commit()
                         active = fragment[0]
                         mPlayer.pause()
                         return@setOnNavigationItemSelectedListener true
                     }
                     R.id.nav_summary -> {
-                        fm.beginTransaction().hide(active).show(fragment[1]).commit()
+                        fm.beginTransaction().replace(R.id.main_container,Summary()).commit()
                         active = fragment[1]
                         mPlayer.pause()
                         return@setOnNavigationItemSelectedListener true
                     }
                     R.id.nav_estimate -> {
-                        fm.beginTransaction().hide(active).show(fragment[2]).commit()
+                        fm.beginTransaction().replace(R.id.main_container,Estimate()).commit()
+//                        fm.beginTransaction().hide(active).show(fragment[2]).commit()
                         active = fragment[2]
                         mPlayer.pause()
                         return@setOnNavigationItemSelectedListener true
                     }
                     R.id.nav_profile -> {
-                        fm.beginTransaction().hide(active).show(fragment[3]).commit()
+//                        fm.beginTransaction().hide(active).show(fragment[3]).commit()
+                        fm.beginTransaction().replace(R.id.main_container,Profile()).commit()
                         active = fragment[3]
                         mPlayer.start()
                         return@setOnNavigationItemSelectedListener true
