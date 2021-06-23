@@ -1,174 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
-    android:padding="16dp"
-    android:background="@color/bg"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:id="@+id/weather_card"
-        app:cardBackgroundColor="@color/teal_500"
-        app:cardCornerRadius="9dp"
-        app:cardElevation="5dp"
-        android:clickable="true"
-        android:layout_height="wrap_content">
-        <ProgressBar
-            android:layout_margin="28dp"
-            android:id="@+id/loaderWeather"
-            android:visibility="visible"
-            android:indeterminateTint="@color/white"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:foregroundGravity="center"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
-        <TableLayout
-            android:visibility="gone"
-            android:id="@+id/loadedWeather"
-            android:padding="8dp"
-            android:stretchColumns="3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TableRow tools:ignore="UselessParent">
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                    <ImageView
-                        android:id="@+id/curTempImg"
-                        android:layout_gravity="center"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:contentDescription="@string/app_name" />
-
-                    <TextView
-                        android:id="@+id/temp_curr"
-                        android:textSize="22sp"
-                        android:textColor="@color/white"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:id="@+id/temp_stat"
-                        android:textSize="12.5sp"
-                        android:layout_marginBottom="8dp"
-                        android:textColor="@color/white"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:paddingVertical="8dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2">
-                    <TableLayout
-                        android:stretchColumns="1"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:gravity="center"
-                        android:layout_height="match_parent">
-                        <TableRow android:layout_gravity="top" android:layout_marginBottom="4dp">
-                        <TextView
-                            android:gravity="center"
-                            android:textColor="@color/white"
-                            android:visibility="gone"
-                            android:paddingStart="8dp"
-                            android:id="@+id/sunrise_time"
-                            android:textSize="18sp"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            tools:ignore="RtlSymmetry" />
-                        <ProgressBar
-                            android:layout_weight="1"
-                            android:id="@+id/sunrise_loader"
-                            android:indeterminateTint="@color/white"
-                            android:layout_width="0dp"
-                            android:layout_height="18dp" />
-
-
-                        <TextView
-                            android:gravity="center"
-                            android:textColor="@color/white"
-                            android:visibility="gone"
-                            android:paddingStart="8dp"
-                            android:textSize="18sp"
-                            android:id="@+id/sunset_time"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            tools:ignore="RtlSymmetry" />
-                        <ProgressBar
-                            android:id="@+id/sunset_loader"
-                            android:indeterminateTint="@color/white"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="18dp" />
-                    </TableRow>
-                        <TableRow android:layout_gravity="bottom" android:layout_marginTop="4dp">
-                            <TextView
-                                android:gravity="center"
-                                android:textColor="@color/white"
-                                android:visibility="gone"
-                                android:paddingStart="8dp"
-                                android:id="@+id/hum_data"
-                                android:textSize="18sp"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                tools:ignore="RtlSymmetry" />
-                            <ProgressBar
-                                android:layout_weight="1"
-                                android:id="@+id/hum_loader"
-                                android:indeterminateTint="@color/white"
-                                android:layout_width="0dp"
-                                android:layout_height="18dp" />
-
-
-                            <TextView
-                                android:gravity="center"
-                                android:textColor="@color/white"
-                                android:visibility="gone"
-                                android:paddingStart="8dp"
-                                android:textSize="18sp"
-                                android:id="@+id/uv_text"
-                                android:layout_weight="1"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                tools:ignore="RtlSymmetry" />
-                            <ProgressBar
-                                android:id="@+id/uv_loader"
-                                android:indeterminateTint="@color/white"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="18dp" />
-                        </TableRow>
-                    </TableLayout>
-                </LinearLayout>
-            </TableRow>
-        </TableLayout>
-    </com.google.android.material.card.MaterialCardView>
-
+    <include
+        layout="@layout/content_main"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
+        android:id="@+id/navigation"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="28dp"
-        android:layout_marginBottom="8dp"
+        android:layout_margin="32dp"
         android:elevation="0dp"
         app:cardBackgroundColor="@color/bg"
         app:cardCornerRadius="50dp"
         app:cardElevation="0dp"
         app:strokeColor="#BBBBBB"
-        app:strokeWidth="1.25dp">
+        app:strokeWidth="1.25dp"
+        tools:ignore="MissingConstraints">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
@@ -184,4 +48,4 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
