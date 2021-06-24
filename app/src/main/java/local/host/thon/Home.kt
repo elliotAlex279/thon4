@@ -83,6 +83,7 @@ class Home : Fragment() {
                                 view.findViewById<TextView>(R.id.sunset_time).visibility = View.VISIBLE
 //                                Toast.makeText(this,Date(dateFormat.format(date) + " " +k["sunrise"].toString()).toLocaleString(),Toast.LENGTH_SHORT).show()
                             },{})
+
                         val stringRequest3 = StringRequest(
                             Request.Method.GET, url3,
                             { responseB ->
