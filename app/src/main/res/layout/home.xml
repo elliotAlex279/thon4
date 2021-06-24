@@ -10,149 +10,166 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:id="@+id/weather_card"
-        app:cardBackgroundColor="@color/teal_500"
+        android:layout_marginEnd="5.5dp"
+        android:layout_weight="1"
+        app:cardBackgroundColor="@color/white"
+        app:strokeWidth="1.5dp"
+        app:strokeColor="@color/grey"
+        android:clickable="false"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:cardCornerRadius="9dp"
-        app:cardElevation="5dp"
-        android:clickable="true"
-        android:layout_height="wrap_content">
-        <ProgressBar
-            android:layout_margin="28dp"
-            android:id="@+id/loaderWeather"
-            android:visibility="visible"
-            android:indeterminateTint="@color/white"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:foregroundGravity="center"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
-        <TableLayout
-            android:visibility="gone"
-            android:id="@+id/loadedWeather"
-            android:padding="8dp"
-            android:stretchColumns="3"
+        app:cardElevation="0dp">
+        <LinearLayout
+            android:padding="16dp"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TableRow tools:ignore="UselessParent">
+            <TextView
+                android:textColor="@color/black2"
+                android:textSize="18dp"
+                android:text="Weather"
+                android:gravity="start"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <ProgressBar
+                android:id="@+id/loaderWeather"
+                android:visibility="visible"
+                android:indeterminate="true"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"/>
+            <TableLayout
+                android:visibility="gone"
+                android:id="@+id/loadedWeather"
+                android:padding="8dp"
+                android:stretchColumns="3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TableRow tools:ignore="UselessParent">
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                    <ImageView
-                        android:id="@+id/curTempImg"
-                        android:layout_gravity="center"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:contentDescription="@string/app_name" />
-
-                    <TextView
-                        android:id="@+id/temp_curr"
-                        android:textSize="22sp"
-                        android:textColor="@color/white"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:id="@+id/temp_stat"
-                        android:textSize="12.5sp"
-                        android:layout_marginBottom="8dp"
-                        android:textColor="@color/white"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:paddingVertical="8dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2">
-                    <TableLayout
-                        android:stretchColumns="1"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
                         android:gravity="center"
-                        android:layout_height="match_parent">
-                        <TableRow android:layout_gravity="top" android:layout_marginBottom="4dp">
-                            <TextView
-                                android:gravity="center"
-                                android:textColor="@color/white"
-                                android:visibility="gone"
-                                android:paddingStart="8dp"
-                                android:id="@+id/sunrise_time"
-                                android:textSize="18sp"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                tools:ignore="RtlSymmetry" />
-                            <ProgressBar
-                                android:layout_weight="1"
-                                android:id="@+id/sunrise_loader"
-                                android:indeterminateTint="@color/white"
-                                android:layout_width="0dp"
-                                android:layout_height="18dp" />
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:id="@+id/curTempImg"
+                            android:layout_gravity="center"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:contentDescription="@string/app_name" />
+
+                        <TextView
+                            android:id="@+id/temp_curr"
+                            android:textSize="22sp"
+                            android:textColor="@color/black2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/temp_stat"
+                            android:textSize="12.5sp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:paddingVertical="8dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2">
+                        <TableLayout
+                            android:stretchColumns="1"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:gravity="center"
+                            android:layout_height="match_parent">
+                            <TableRow android:layout_gravity="top" android:layout_marginBottom="4dp">
+                                <TextView
+                                    android:gravity="center"
+                                    android:textColor="@color/black2"
+                                    android:visibility="gone"
+                                    android:paddingStart="8dp"
+                                    android:id="@+id/sunrise_time"
+                                    android:textSize="18sp"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    tools:ignore="RtlSymmetry" />
+                                <ProgressBar
+                                    android:layout_weight="1"
+                                    android:id="@+id/sunrise_loader"
+
+                                    android:layout_width="0dp"
+                                    android:layout_height="18dp" />
 
 
-                            <TextView
-                                android:gravity="center"
-                                android:textColor="@color/white"
-                                android:visibility="gone"
-                                android:paddingStart="8dp"
-                                android:textSize="18sp"
-                                android:id="@+id/sunset_time"
-                                android:layout_weight="1"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                tools:ignore="RtlSymmetry" />
-                            <ProgressBar
-                                android:id="@+id/sunset_loader"
-                                android:indeterminateTint="@color/white"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="18dp" />
-                        </TableRow>
-                        <TableRow android:layout_gravity="bottom" android:layout_marginTop="4dp">
-                            <TextView
-                                android:gravity="center"
-                                android:textColor="@color/white"
-                                android:visibility="gone"
-                                android:paddingStart="8dp"
-                                android:id="@+id/hum_data"
-                                android:textSize="18sp"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                tools:ignore="RtlSymmetry" />
-                            <ProgressBar
-                                android:layout_weight="1"
-                                android:id="@+id/hum_loader"
-                                android:indeterminateTint="@color/white"
-                                android:layout_width="0dp"
-                                android:layout_height="18dp" />
+                                <TextView
+                                    android:gravity="center"
+                                    android:textColor="@color/black2"
+                                    android:visibility="gone"
+                                    android:paddingStart="8dp"
+                                    android:textSize="18sp"
+                                    android:id="@+id/sunset_time"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    tools:ignore="RtlSymmetry" />
+                                <ProgressBar
+                                    android:id="@+id/sunset_loader"
+
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="18dp" />
+                            </TableRow>
+                            <TableRow android:layout_gravity="bottom" android:layout_marginTop="4dp">
+                                <TextView
+                                    android:gravity="center"
+                                    android:textColor="@color/black2"
+                                    android:visibility="gone"
+                                    android:paddingStart="8dp"
+                                    android:id="@+id/hum_data"
+                                    android:textSize="18sp"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    tools:ignore="RtlSymmetry" />
+                                <ProgressBar
+                                    android:layout_weight="1"
+                                    android:id="@+id/hum_loader"
+
+                                    android:layout_width="0dp"
+                                    android:layout_height="18dp" />
 
 
-                            <TextView
-                                android:gravity="center"
-                                android:textColor="@color/white"
-                                android:visibility="gone"
-                                android:paddingStart="8dp"
-                                android:textSize="18sp"
-                                android:id="@+id/uv_text"
-                                android:layout_weight="1"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                tools:ignore="RtlSymmetry" />
-                            <ProgressBar
-                                android:id="@+id/uv_loader"
-                                android:indeterminateTint="@color/white"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="18dp" />
-                        </TableRow>
-                    </TableLayout>
-                </LinearLayout>
-            </TableRow>
-        </TableLayout>
+                                <TextView
+                                    android:gravity="center"
+                                    android:textColor="@color/black2"
+                                    android:visibility="gone"
+                                    android:paddingStart="8dp"
+                                    android:textSize="18sp"
+                                    android:id="@+id/uv_text"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    tools:ignore="RtlSymmetry" />
+                                <ProgressBar
+                                    android:id="@+id/uv_loader"
+
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="18dp" />
+                            </TableRow>
+                        </TableLayout>
+                    </LinearLayout>
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+
+
     </com.google.android.material.card.MaterialCardView>
     <TableLayout
         android:shrinkColumns="1"
@@ -165,10 +182,12 @@
         android:layout_weight="1"
         android:id="@+id/curr_unit_card"
         app:cardCornerRadius="9dp"
-        app:cardBackgroundColor="#F06292"
-        app:cardElevation="5dp"
+        app:cardBackgroundColor="@color/white"
+        app:strokeWidth="1.5dp"
+        app:strokeColor="@color/grey"
         android:clickable="false"
-        android:layout_height="140dp"
+        app:cardElevation="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp">
         <LinearLayout
             android:orientation="vertical"
@@ -176,36 +195,34 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
                 <TextView
-                    android:layout_gravity="center"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black2"
+                    android:layout_gravity="start"
                     android:text="Current Generation"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
             <TextView
                 android:visibility="gone"
-                android:gravity="center"
-                android:padding="16dp"
+                android:gravity="start"
+                android:paddingTop="2dp"
                 android:id="@+id/curr_unit_gen"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <ProgressBar
-                android:layout_marginVertical="16dp"
                 android:layout_gravity="center"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/updt_curGen_prg"
                 android:indeterminate="true"
-                android:indeterminateTint="@color/white"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 />
                 <TextView
-                    android:gravity="center"
+                    android:gravity="end"
+                    android:textSize="10sp"
                     android:visibility="gone"
-                    android:textColor="@color/white"
                     android:id="@+id/curr_last_updated"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -214,14 +231,16 @@
     </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
+                android:layout_marginEnd="5.5dp"
                 android:layout_weight="1"
-                android:layout_marginStart="5.5dp"
                 android:id="@+id/tot_unit_card"
                 app:cardCornerRadius="9dp"
-                app:cardBackgroundColor="#7e57c2"
-                app:cardElevation="5dp"
+                app:cardBackgroundColor="@color/white"
+                app:strokeWidth="1.5dp"
+                app:strokeColor="@color/grey"
                 android:clickable="false"
-                android:layout_height="140dp"
+                app:cardElevation="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp">
                 <LinearLayout
                     android:orientation="vertical"
@@ -229,76 +248,139 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
-                        android:layout_gravity="center"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black2"
+                        android:layout_gravity="start"
                         android:text="Total Generation"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
                     <TextView
                         android:visibility="gone"
-                        android:gravity="center"
-                        android:padding="24dp"
+                        android:gravity="start"
+                        android:paddingTop="2dp"
                         android:id="@+id/tot_unit_gen"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                        android:textColor="@color/white"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                     <ProgressBar
-                        android:layout_marginVertical="16dp"
                         android:layout_gravity="center"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/tot_curGen_prg"
                         android:indeterminate="true"
-                        android:indeterminateTint="@color/white"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                         />
+                    <TextView
+                        android:gravity="end"
+                        android:textSize="10sp"
+                        android:visibility="invisible"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </TableRow>
     </TableLayout>
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_marginTop="16dp"
-        android:layout_height="wrap_content">
+        android:layout_marginEnd="5.5dp"
+        android:layout_weight="1"
+        app:cardBackgroundColor="@color/white"
+        app:strokeWidth="0dp"
+        app:strokeColor="@color/grey"
+        android:clickable="false"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:cardCornerRadius="9dp"
+        app:cardElevation="0dp">
         <TableLayout
             android:shrinkColumns="*"
             android:padding="8dp"
             android:stretchColumns="2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TableRow android:padding="4dp">
-                <TextView
-                    android:gravity="center"
-                    android:layout_weight="1"
+            <TableRow>
+                <com.google.android.material.button.MaterialButton
                     android:text="Slot"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"
-                    />
-                <TextView
-                    android:gravity="center"
                     android:layout_weight="1"
-                    android:text="Unit Generated"
+                    android:layout_marginEnd="4dp"
                     android:textStyle="bold"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black2"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:text="Units Generated"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textColor="@color/black2"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     />
             </TableRow>
             <TableRow>
-                <TextView android:textColor="@color/black" android:text="6 am - 9 am" android:gravity="center" android:textSize="18sp" android:layout_weight="1"/>
-                <TextView android:textColor="@color/black" android:id="@+id/sl1" android:gravity="center" android:text="1 Unit" android:textSize="18sp" android:layout_weight="1"/>
+                <com.google.android.material.button.MaterialButton
+                    android:text="6 am - 10 am"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:textColor="@color/black2"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:text="1"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/black2"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    />
             </TableRow>
-            <TableRow>
-
+            <TableRow android:layout_marginVertical="1dp">
+                <com.google.android.material.button.MaterialButton
+                    android:text="10 am - 2 pm"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:textColor="@color/black2"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:text="1"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/black2"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    />
             </TableRow>
-            <TableRow>
-
+            <TableRow android:layout_marginVertical="1dp">
+                <com.google.android.material.button.MaterialButton
+                    android:text="2 pm - 6 pm"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:textColor="@color/black2"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:text="-"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/black2"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    />
             </TableRow>
-            <TableRow>
-
+            <TableRow android:layout_marginVertical="1dp">
+                <com.google.android.material.button.MaterialButton
+                    android:text="6 pm - 10 pm"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:textColor="@color/black2"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:text="-"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/black2"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    />
             </TableRow>
         </TableLayout>
     </com.google.android.material.card.MaterialCardView>
