@@ -35,44 +35,44 @@ class MainActivity : AppCompatActivity() {
 
         val fm: FragmentManager = supportFragmentManager
         var active: Fragment = fragment[0]
-        fm.beginTransaction().add(R.id.main_container, fragment[3], "4").hide(fragment[3]).commit();
-        fm.beginTransaction().add(R.id.main_container, fragment[2], "3").hide(fragment[2]).commit();
-        fm.beginTransaction().add(R.id.main_container, fragment[1], "2").hide(fragment[1]).commit();
+//        fm.beginTransaction().add(R.id.main_container, fragment[3], "4").hide(fragment[3]).commit();
+//        fm.beginTransaction().add(R.id.main_container, fragment[2], "3").hide(fragment[2]).commit();
+//        fm.beginTransaction().add(R.id.main_container, fragment[1], "2").hide(fragment[1]).commit();
         fm.beginTransaction().add(R.id.main_container,fragment[0], "1").commit();
-        val mPlayer: MediaPlayer = MediaPlayer.create(this, R.raw.sjli)
-
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-            bottomNav.setOnNavigationItemSelectedListener{ item ->
-                when (item.itemId) {
-                    R.id.nav_home -> {
-                        fm.beginTransaction().hide(active).show(fragment[0]).commit()
-                        active = fragment[0]
-                        mPlayer.pause()
-                        return@setOnNavigationItemSelectedListener true
-                    }
-                    R.id.nav_summary -> {
-                        fm.beginTransaction().hide(active).show(fragment[1]).commit()
-                        active = fragment[1]
-                        mPlayer.pause()
-                        return@setOnNavigationItemSelectedListener true
-                    }
-                    R.id.nav_estimate -> {
-                        fm.beginTransaction().hide(active).show(fragment[2]).commit()
-                        active = fragment[2]
-                        mPlayer.pause()
-                        return@setOnNavigationItemSelectedListener true
-                    }
-                    R.id.nav_profile -> {
-                        fm.beginTransaction().hide(active).show(fragment[3]).commit()
-                        active = fragment[3]
-                        mPlayer.start()
-                        return@setOnNavigationItemSelectedListener true
-                    }
-                    else -> {
-                        return@setOnNavigationItemSelectedListener false
-                    }
-                }
-            }
+//        val mPlayer: MediaPlayer = MediaPlayer.create(this, R.raw.sjli)
+//
+//        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+//            bottomNav.setOnNavigationItemSelectedListener{ item ->
+//                when (item.itemId) {
+//                    R.id.nav_home -> {
+//                        fm.beginTransaction().hide(active).show(fragment[0]).commit()
+//                        active = fragment[0]
+//                        mPlayer.pause()
+//                        return@setOnNavigationItemSelectedListener true
+//                    }
+//                    R.id.nav_summary -> {
+//                        fm.beginTransaction().hide(active).show(fragment[1]).commit()
+//                        active = fragment[1]
+//                        mPlayer.pause()
+//                        return@setOnNavigationItemSelectedListener true
+//                    }
+//                    R.id.nav_estimate -> {
+//                        fm.beginTransaction().hide(active).show(fragment[2]).commit()
+//                        active = fragment[2]
+//                        mPlayer.pause()
+//                        return@setOnNavigationItemSelectedListener true
+//                    }
+//                    R.id.nav_profile -> {
+//                        fm.beginTransaction().hide(active).show(fragment[3]).commit()
+//                        active = fragment[3]
+//                        mPlayer.start()
+//                        return@setOnNavigationItemSelectedListener true
+//                    }
+//                    else -> {
+//                        return@setOnNavigationItemSelectedListener false
+//                    }
+//                }
+//            }
 
     }
 
