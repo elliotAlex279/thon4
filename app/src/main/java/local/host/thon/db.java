@@ -3,15 +3,15 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class db {
-    public static void main(String args[]){
 
-    }
-    public static int dailyGeneratetotal(String dates){
+    public static int dailyGeneratetotal() throws ClassNotFoundException {
+        Class.forName("com.mysql.jdbc.Driver");
+
         int temp=0;
         try(Connection conn = sql.getconnectio()){
             PreparedStatement stmt = conn.prepareStatement("select (select unit from dataSet where dates=? order by times desc limit 1) - (select unit from dataSet where dates =  (select  ? - interval 1 day) order by times desc limit 1) as data");
-            stmt.setDate(1, java.sql.Date.valueOf(dates));
-            stmt.setDate(2, java.sql.Date.valueOf(dates));
+            stmt.setDate(1, new Date(System.currentTimeMillis()));
+            stmt.setDate(2, new Date(System.currentTimeMillis()));
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
                 temp = rs.getInt(1);}
@@ -37,7 +37,7 @@ public class db {
                 res.add(rs.getInt(2));
             }
         }
-        catch (SQLException e){
+        catch (SQLException | ClassNotFoundException e){
             System.out.println(e.getMessage());
         }
         ArrayList<Integer> resultf = new ArrayList<Integer>();
@@ -55,7 +55,7 @@ public class db {
             while (rs.next()){
                 temp = rs.getInt(1);
             }
-        }catch (SQLException e){
+        }catch (SQLException | ClassNotFoundException e){
             System.out.println(e.getMessage());
         }
         return temp;
@@ -68,7 +68,7 @@ public class db {
             while (rs.next()){
                 temp = rs.getDouble(1);
             }
-        }catch (SQLException e){
+        }catch (SQLException | ClassNotFoundException e){
             System.out.println(e.getMessage());
         }
         return temp;

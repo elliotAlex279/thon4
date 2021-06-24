@@ -5,17 +5,15 @@ import java.sql.SQLException;
 
 
 public class sql {
-    public static Connection getconnectio() throws SQLException {
 
+    public static Connection getconnectio() throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.jdbc.Driver");
 
         Connection conn = null;
-
         String url = "jdbc:mysql://WKTDxt18Em@remotemysql.com:3306/WKTDxt18Em";
         String user = "WKTDxt18Em";
         String pass = "2g87yWwn89";
         conn = DriverManager.getConnection(url, user, pass);
-
         return conn;
-
     }
 }

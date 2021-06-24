@@ -130,7 +130,7 @@ class Home : Fragment() {
 
     private fun timeSince() : String {
 
-        var seconds = floor(((Date().time - curGenT!!).toDouble() / 1000F));
+        val seconds = floor(((Date().time - curGenT!!).toDouble() / 1000F));
 
         var interval : Double = seconds / 31536000F;
 
@@ -177,6 +177,7 @@ class Home : Fragment() {
         val lastcurr = view.findViewById<TextView>(R.id.curr_last_updated)
         val unVal = view.findViewById<TextView>(R.id.curr_unit_gen)
         curGenT = Date().time
+        val dateFormatB: DateFormat = SimpleDateFormat("yyyy-MM-dd")
         Handler().postDelayed({
             curUnPrg.visibility = View.GONE
             lastcurr.visibility = View.VISIBLE
