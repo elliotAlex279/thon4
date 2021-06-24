@@ -7,14 +7,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <include
-        layout="@layout/content_main"
-        android:layout_width="0dp"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@+id/navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        tools:context="MainActivity"
+        android:padding="1dp"
+        app:layout_constraintBottom_toTopOf="@id/navigation"
+        android:id="@+id/main_container">
+
+    </FrameLayout>
+<!--    <include-->
+<!--        layout="@layout/content_main"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/navigation"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"/>-->
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
