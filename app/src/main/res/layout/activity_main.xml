@@ -1,136 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
-    android:padding="16dp"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/PrimaryDiv1"
-        android:orientation="horizontal"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        tools:context="MainActivity"
+        android:padding="1dp"
+        app:layout_constraintBottom_toTopOf="@id/navigation"
+        android:id="@+id/main_container">
+
+    </FrameLayout>
 
     <com.google.android.material.card.MaterialCardView
-        android:clickable="true"
-        app:cardCornerRadius="28dp"
-        android:id="@+id/sunrise_card"
-        android:background="@drawable/sunsrise_bg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="220dp"
-            android:background="@drawable/sunsrise_bg"
-            android:layout_height="175dp"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sunrise"
-                    android:textColor="@color/white"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    />
-                <TextView android:id="@+id/hey"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="6 : 45"
-                    android:textColor="@color/white"
-                    android:textAppearance="?attr/textAppearanceHeadline3"
-                    />
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
-            android:clickable="true"
-            android:id="@+id/weather_card"
-            android:layout_marginLeft="16dp"
-            app:cardCornerRadius="28dp"
-            app:cardBackgroundColor="@color/sec"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="145dp"
-                android:layout_height="175dp"
-                android:gravity="center"
-                android:orientation="vertical">
-                <ProgressBar
-                    android:id="@+id/loaderWeather"
-                    android:indeterminateTint="@color/white"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <RelativeLayout
-                    android:id="@+id/loadedWeather"
-                    android:visibility="gone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-                    <ImageView
-                        android:id="@+id/curTempImg"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="75dp"/>
-                    <TextView android:id="@+id/temp_curr"
-                        android:layout_below="@id/curTempImg"
-                        android:layout_centerHorizontal="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:textAppearance="?attr/textAppearanceHeadline4"
-                        />
-                    <TextView android:id="@+id/temp_stat"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="@color/white"
-                        android:textSize="16dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        />
-                </RelativeLayout>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-    </LinearLayout>
-
-    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:id="@+id/navigation"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        app:cardCornerRadius="50dp"
-        app:strokeWidth="1.25dp"
-        app:cardBackgroundColor="@color/tur"
-        android:layout_marginBottom="8dp"
+        android:layout_marginHorizontal="28dp"
+        android:layout_margin="32dp"
         android:elevation="0dp"
+        app:cardBackgroundColor="@color/bg"
+        app:cardCornerRadius="50dp"
         app:cardElevation="0dp"
         app:strokeColor="#BBBBBB"
-        android:layout_marginHorizontal="28dp"
-        android:layout_height="wrap_content">
+        app:strokeWidth="1.25dp"
+        tools:ignore="MissingConstraints">
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
-            app:elevation="0dp"
-            app:backgroundTint="#000000FF"
-            android:layout_margin="8dp"
-            app:itemRippleColor="#000000FF"
-            android:elevation="0dp"
-            android:clickable="false"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:clickable="false"
+            android:elevation="0dp"
+            app:backgroundTint="#000000FF"
+            app:elevation="0dp"
+            app:itemRippleColor="#000000FF"
             app:menu="@menu/bottom_navigation_menu" />
 
     </com.google.android.material.card.MaterialCardView>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
