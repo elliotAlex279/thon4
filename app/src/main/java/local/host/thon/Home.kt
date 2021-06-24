@@ -1,6 +1,7 @@
 package local.host.thon
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -21,12 +22,23 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
+import lecho.lib.hellocharts.model.Line
 import org.json.JSONObject
 import java.lang.Exception
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.floor
+import lecho.lib.hellocharts.view.LineChartView
+import lecho.lib.hellocharts.model.LineChartData
+
+import lecho.lib.hellocharts.model.PointValue
+
+
+
+
+
+
 
 var curGenT : Long? = null
 
@@ -181,6 +193,23 @@ class Home : Fragment() {
         prg2.visibility = View.GONE
         crd.visibility = View.VISIBLE
         crd.text = "50 Units"
+        val chart = view.findViewById<LineChartView>(R.id.chart)
+        val values: MutableList<PointValue> = ArrayList()
+        values.add(PointValue(0F, 2F))
+        values.add(PointValue(1F, 4F))
+        values.add(PointValue(2F, 3F))
+        values.add(PointValue(3F, 4F))
+
+        //In most cased you can call data model methods in builder-pattern-like manner.
+
+        //In most cased you can call data model methods in builder-pattern-like manner.
+        val line: Line = Line(values).setColor(Color.BLUE).setCubic(true)
+        val lines: MutableList<Line> = ArrayList<Line>()
+        lines.add(line)
+
+        val data = LineChartData()
+        data.lines = lines
+        chart.lineChartData = data
         curUnCard.setOnClickListener {
             curUnPrg.visibility = View.VISIBLE
             lastcurr.visibility = View.GONE

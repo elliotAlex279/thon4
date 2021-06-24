@@ -258,5 +258,17 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </TableRow>
+        <TableRow android:layout_marginTop="16dp">
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="255dp">
+            <lecho.lib.hellocharts.view.LineChartView
+                android:id="@+id/chart"
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            </com.google.android.material.card.MaterialCardView>
+        </TableRow>
     </TableLayout>
 </LinearLayout>
