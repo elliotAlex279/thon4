@@ -1,4 +1,21 @@
 package local.host.thon;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 
 public class sql {
+    public static Connection getconnectio() throws SQLException {
+
+
+        Connection conn = null;
+
+        String url = "jdbc:mysql://WKTDxt18Em@remotemysql.com:3306/WKTDxt18Em";
+        String user = "WKTDxt18Em";
+        String pass = "2g87yWwn89";
+        conn = DriverManager.getConnection(url, user, pass);
+
+        return conn;
+
+    }
 }
