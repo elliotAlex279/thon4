@@ -14,6 +14,9 @@ import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
+import com.android.volley.Request
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -91,16 +94,26 @@ class Summary : Fragment() {
                 }
                 .show()
         }
+        val queue = Volley.newRequestQueue(view.context)
+        val url = "${addr}/bet/"
+
+// Request a string response from the provided URL.
+        val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            { response ->},{
+
+            })
+        queue.add(stringRequest)
         val mBarChart = view.findViewById(R.id.barchart) as BarChart
 
-        mBarChart.addBar(BarModel(2.3f, -0xedcbaa))
-        mBarChart.addBar(BarModel(2f, -0xcbcbaa))
-        mBarChart.addBar(BarModel(3.3f, -0xa9cbaa))
-        mBarChart.addBar(BarModel(1.1f, -0x78c0aa))
-        mBarChart.addBar(BarModel(2.7f, -0xa9480f))
-        mBarChart.addBar(BarModel(2f, -0xcbcbaa))
-        mBarChart.addBar(BarModel(0.4f, -0xe00b54))
-        mBarChart.addBar(BarModel(4f, -0xe45b1a))
+        mBarChart.addBar(BarModel("A",2.3f, -0xedcbaa))
+        mBarChart.addBar(BarModel("A",2f, -0xcbcbaa))
+        mBarChart.addBar(BarModel("A",3.3f, -0xa9cbaa))
+        mBarChart.addBar(BarModel("A",1.1f, -0x78c0aa))
+        mBarChart.addBar(BarModel("A",2.7f, -0xa9480f))
+        mBarChart.addBar(BarModel("A",2f, -0xcbcbaa))
+        mBarChart.addBar(BarModel("A",0.4f, -0xe00b54))
+        mBarChart.addBar(BarModel("A",4f, -0xe45b1a))
 
         mBarChart.startAnimation()
         return view;

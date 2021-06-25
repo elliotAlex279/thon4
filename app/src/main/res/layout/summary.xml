@@ -63,31 +63,28 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"/>
                    <TableLayout
+                       android:stretchColumns="2"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content">
                        <TableRow>
-                           <GridLayout>
                            <com.google.android.material.button.MaterialButton
                                android:layout_weight="1"
                                android:id="@+id/strart_range"
                                android:text="Starting Range"
-                               android:layout_marginEnd="5dp"
                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                                />
+                       </TableRow>
+                       <TableRow>
                            <com.google.android.material.button.MaterialButton
                                android:layout_weight="1"
                                android:id="@+id/end_range"
                                android:text=" Ending Range "
-                               android:layout_marginStart="5dp"
                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                                />
-                           </GridLayout>
                        </TableRow>
                        <TableRow>
                            <RadioGroup
-                               android:gravity="center"
                                android:id="@+id/one"
-                               android:layout_gravity="center"
                                android:layout_weight="1"
                                android:orientation="horizontal">
                                <RadioButton
