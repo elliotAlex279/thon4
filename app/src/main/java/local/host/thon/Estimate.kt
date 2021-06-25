@@ -24,15 +24,17 @@ class Estimate : Fragment() {
         super.onCreate(savedInstanceState)
         val view =  inflater.inflate(R.layout.estimate, container, false)
         val btn1 = view.findViewById<MaterialButton>(R.id.cal_btn1)
-            view.findViewById<TextView>(R.id.cal1).text = "1.23"
+        val pre1 = view.findViewById<TextView>(R.id.cal1)
+        pre1.text = "5.14"
         val ans = arrayOf(view.findViewById<TextView>(R.id.ans1),view.findViewById<TextView>(R.id.ans2),view.findViewById<TextView>(R.id.ans3))
         ans[0].text = "2"
         btn1.setOnClickListener {
             val x = view.findViewById<TextInputEditText>(R.id.inp1)
             try{
                 val k = x.text.toString().toFloat()
-                ans[1].text = (x.text.toString().toFloat() * 30F * 2F).toString()
-                ans[2].text = (70000F/k).toInt().toString()
+                val m = ((pre1.text.toString().toFloat() - x.text.toString().toFloat())  * 30F * 2F)
+                ans[1].text = m.toString()
+                ans[2].text = (70000F/m).toInt().toString()
             }catch (e : Exception){
                 Snackbar.make(view,"Value is must needed thing in this calculation",Snackbar.LENGTH_SHORT).show()
             }
