@@ -16,10 +16,16 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import lecho.lib.hellocharts.model.*
+import com.jjoe64.graphview.GraphView
+import com.jjoe64.graphview.series.BarGraphSeries
+import com.jjoe64.graphview.series.DataPoint
 import java.text.SimpleDateFormat
 import java.util.*
-import lecho.lib.hellocharts.view.LineChartView
+import com.jjoe64.graphview.series.LineGraphSeries
+
+
+
+
 
 
 class Summary : Fragment() {
@@ -86,27 +92,17 @@ class Summary : Fragment() {
                 }
                 .show()
         }
-        val chart = view.findViewById<lecho.lib.hellocharts.view.ColumnChartView>(R.id.barChart)
-        val values: MutableList<SubcolumnValue> = ArrayList()
-        values.add(SubcolumnValue())
-        values.add(SubcolumnValue(20F))
-        values.add(SubcolumnValue(6F))
-        values.add(SubcolumnValue(9F))
-
-        //In most cased you can call data model methods in builder-pattern-like manner.
-
-        //In most cased you can call data model methods in builder-pattern-like manner.
-        val line: Column = Column(values)
-        val lines: MutableList<Column> = ArrayList<Column>()
-        lines.add(line)
-
-        val data = ColumnChartData()
-        data.columns = lines
-        val axis = Axis.generateAxisFromRange(0F,22F,1F)
-        val axisX = mutableListOf<Float>(1F,2F,3F,4F);
-        val acis = mutableListOf<String>("Jan","Feb","Mar","Apr")
-        data.axisYLeft = axis
-        chart.columnChartData = data
+        val chart = view.findViewById<GraphView>(R.id.barChart)
+        val series: BarGraphSeries<DataPoint> = BarGraphSeries(
+            arrayOf(
+                DataPoint(0F.toDouble(), 1F.toDouble()),
+                DataPoint(1F.toDouble(), 5F.toDouble()),
+                DataPoint(2F.toDouble(), 3F.toDouble()),
+                DataPoint(3F.toDouble(), 2F.toDouble()),
+                DataPoint(4F.toDouble(), 6F.toDouble())
+            )
+        )
+        chart.addSeries(series)
         return view;
     }
 }

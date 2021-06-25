@@ -24,16 +24,12 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import lecho.lib.hellocharts.model.*
 import org.json.JSONObject
 import java.lang.Exception
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.floor
-import lecho.lib.hellocharts.view.LineChartView
-
-import lecho.lib.hellocharts.view.ColumnChartView
 import org.json.JSONArray
 import java.lang.reflect.Array
 

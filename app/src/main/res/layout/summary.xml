@@ -118,8 +118,8 @@
                    </TableLayout>
                </LinearLayout>
            </com.google.android.material.card.MaterialCardView>
-    <lecho.lib.hellocharts.view.ColumnChartView
-        android:id="@+id/barChart"
+    <com.jjoe64.graphview.GraphView
         android:layout_width="match_parent"
-        android:layout_height="250dp"/>
+        android:layout_height="200dip"
+        android:id="@+id/barChart" />
 </LinearLayout>
