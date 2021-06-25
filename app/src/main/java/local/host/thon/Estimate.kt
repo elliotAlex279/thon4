@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
+import java.lang.Exception
 
 class Estimate : Fragment() {
     override fun onCreateView(
@@ -23,10 +25,17 @@ class Estimate : Fragment() {
         val view =  inflater.inflate(R.layout.estimate, container, false)
         val btn1 = view.findViewById<MaterialButton>(R.id.cal_btn1)
             view.findViewById<TextView>(R.id.cal1).text = "1.23"
-        val ans1 = view.findViewById<TextView>(R.id.ans1)
+        val ans = arrayOf(view.findViewById<TextView>(R.id.ans1),view.findViewById<TextView>(R.id.ans2),view.findViewById<TextView>(R.id.ans3))
+        ans[0].text = "2"
         btn1.setOnClickListener {
             val x = view.findViewById<TextInputEditText>(R.id.inp1)
-            ans1.text = (x.text.toString().toFloat() * 30F * 2F).toString()
+            try{
+                val k = x.text.toString().toFloat()
+                ans[1].text = (x.text.toString().toFloat() * 30F * 2F).toString()
+                ans[2].text = (70000F/k).toInt().toString()
+            }catch (e : Exception){
+                Snackbar.make(view,"Value is must needed thing in this calculation",Snackbar.LENGTH_SHORT).show()
+            }
         }
         return view;
     }
