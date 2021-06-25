@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.StrictMode
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,14 +45,16 @@ class Home : Fragment() {
     @SuppressLint("SetTextI18n", "SimpleDateFormat", "CutPasteId")
     private fun checkWeather(view : View){
         val queue = Volley.newRequestQueue(view.context)
-        val url = "http://www.checkip.org"
+        val url = "http://checkip.dyndns.com"
 
 // Request a string response from the provided URL.
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             { response ->
+
                 val publicIP =
-                    response.split("<span style=\"color: #5d9bD3;\">")[1].split("</span>")[0]
+                    response.split(": ")[1].split("<")[0]
+                Log.d("A",publicIP)
                 val url2 =
                     "http://api.ipstack.com/$publicIP?access_key=d8d57e041b8d5da9101ba4fbde602b6b"
 
@@ -117,14 +120,18 @@ class Home : Fragment() {
                                                 Toast.LENGTH_SHORT).show()
                                         }
                                     })
-                            }, {})
+                            }, {Toast.makeText(view.context,"Internet is off :( ",
+                                Toast.LENGTH_SHORT).show()})
                         queue.add(stringRequest31)
                         queue.add(stringRequest3)
                         // Display the first 500 characters of the response string.
                     },
-                    { })
+                    {
+                        Toast.makeText(view.context,"Internet is off :( ",
+                            Toast.LENGTH_SHORT).show()
+                    })
                 queue.add(stringRequest2)
-            },{})
+            },{Log.d("ABC",it.toString())})
 
 // Add the request to the RequestQueue.
         queue.add(stringRequest)
@@ -175,6 +182,7 @@ class Home : Fragment() {
 //        Log.d("K","https://api.sunrise-sunset.org/json?lat=${location["latitude"]}&lng=${location["longitude"]}");
 //        var dtp = Date().formatTo("yyyy-MM-dd")
 
+        checkWeather(view)
         val curUnCard = view.findViewById<MaterialCardView>(R.id.curr_unit_card)
         val curUnPrg = view.findViewById<ProgressBar>(R.id.updt_curGen_prg)
         val lastcurr = view.findViewById<TextView>(R.id.curr_last_updated)
@@ -265,7 +273,6 @@ class Home : Fragment() {
                 },{err->Snackbar.make(view,err.toString(),Snackbar.LENGTH_SHORT).show()})
             queue.add(stringRequestK)
         }
-        checkWeather(view)
         view.findViewById<CardView>(R.id.weather_card).setOnClickListener {
             view.findViewById<LinearLayout>(R.id.loadedWeather).visibility = View.GONE
             view.findViewById<ProgressBar>(R.id.loaderWeather).visibility = View.VISIBLE

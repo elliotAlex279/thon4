@@ -2,20 +2,25 @@ package local.host.thon
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.graphics.Color
 import android.os.Bundle
 import android.os.StrictMode
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
+import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import lecho.lib.hellocharts.model.*
 import java.text.SimpleDateFormat
 import java.util.*
+import lecho.lib.hellocharts.view.LineChartView
+
 
 class Summary : Fragment() {
     @SuppressLint("SetTextI18n", "SimpleDateFormat")
@@ -32,6 +37,8 @@ class Summary : Fragment() {
         val pBtn = view.findViewById<MaterialCardView>(R.id.pSelectBtn)
         val stR = arrayOf<MaterialButton>(view.findViewById(R.id.strart_range),view.findViewById(R.id.end_range))
         val range = arrayOf("","")
+        val one = view.findViewById<RadioGroup>(R.id.one)
+        one.check(R.id.daily);
         stR[0].setOnClickListener {
             val c = Calendar.getInstance()
             val year = c.get(Calendar.YEAR)
@@ -79,6 +86,27 @@ class Summary : Fragment() {
                 }
                 .show()
         }
+        val chart = view.findViewById<lecho.lib.hellocharts.view.ColumnChartView>(R.id.barChart)
+        val values: MutableList<SubcolumnValue> = ArrayList()
+        values.add(SubcolumnValue())
+        values.add(SubcolumnValue(20F))
+        values.add(SubcolumnValue(6F))
+        values.add(SubcolumnValue(9F))
+
+        //In most cased you can call data model methods in builder-pattern-like manner.
+
+        //In most cased you can call data model methods in builder-pattern-like manner.
+        val line: Column = Column(values)
+        val lines: MutableList<Column> = ArrayList<Column>()
+        lines.add(line)
+
+        val data = ColumnChartData()
+        data.columns = lines
+        val axis = Axis.generateAxisFromRange(0F,22F,1F)
+        val axisX = mutableListOf<Float>(1F,2F,3F,4F);
+        val acis = mutableListOf<String>("Jan","Feb","Mar","Apr")
+        data.axisYLeft = axis
+        chart.columnChartData = data
         return view;
     }
 }

@@ -8,10 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.android.volley.Request
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import java.lang.Exception
+import java.util.*
 
 class Estimate : Fragment() {
     override fun onCreateView(
@@ -25,6 +29,12 @@ class Estimate : Fragment() {
         val view =  inflater.inflate(R.layout.estimate, container, false)
         val btn1 = view.findViewById<MaterialButton>(R.id.cal_btn1)
         val pre1 = view.findViewById<TextView>(R.id.cal1)
+        val queue = Volley.newRequestQueue(view.context)
+        val stringRequest = StringRequest(
+            Request.Method.GET, "${addr}/env",
+            { response ->
+                pre1.text = "5.14"
+            },{})
         pre1.text = "5.14"
         val ans = arrayOf(view.findViewById<TextView>(R.id.ans1),view.findViewById<TextView>(R.id.ans2),view.findViewById<TextView>(R.id.ans3))
         ans[0].text = "2"

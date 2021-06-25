@@ -64,9 +64,9 @@
                    android:layout_height="wrap_content"/>
                    <TableLayout
                        android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:stretchColumns="2">
+                       android:layout_height="wrap_content">
                        <TableRow>
+                           <GridLayout>
                            <com.google.android.material.button.MaterialButton
                                android:layout_weight="1"
                                android:id="@+id/strart_range"
@@ -81,8 +81,45 @@
                                android:layout_marginStart="5dp"
                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                                />
+                           </GridLayout>
+                       </TableRow>
+                       <TableRow>
+                           <RadioGroup
+                               android:gravity="center"
+                               android:id="@+id/one"
+                               android:layout_gravity="center"
+                               android:layout_weight="1"
+                               android:orientation="horizontal">
+                               <RadioButton
+                                   android:layout_gravity="center"
+                                   android:id="@+id/daily"
+                                   android:layout_weight="1"
+                                   android:text="Daily"
+                                   android:layout_marginEnd="30dp"
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"/>
+                               <RadioButton
+                                   android:layout_gravity="center"
+                                   android:id="@+id/monthly"
+                                   android:layout_weight="1"
+                                   android:text="Monthly"
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"/>
+                               <RadioButton
+                                   android:layout_marginStart="28dp"
+                                   android:layout_gravity="center"
+                                   android:id="@+id/yearly"
+                                   android:layout_weight="1"
+                                   android:text="Yeraly"
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"/>
+                           </RadioGroup>
                        </TableRow>
                    </TableLayout>
                </LinearLayout>
            </com.google.android.material.card.MaterialCardView>
+    <lecho.lib.hellocharts.view.ColumnChartView
+        android:id="@+id/barChart"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"/>
 </LinearLayout>
