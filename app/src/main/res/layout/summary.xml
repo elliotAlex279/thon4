@@ -1,13 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:gravity="center"
     android:layout_width="match_parent"
+    android:padding="16dp"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="125dp"
-        android:src="@drawable/ic_baseline_history_toggle_off_24"
-        android:layout_height="125dp"/>
-
+           <TextView
+               android:textSize="40sp"
+               android:textColor="@color/black2"
+               android:text="Analysis"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+    <com.google.android.material.card.MaterialCardView
+        app:cardElevation="2.5dp"
+        android:clickable="true"
+        android:id="@+id/pSelectBtn"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        app:cardCornerRadius="9dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textColor="@color/black2"
+                android:textStyle="bold"
+                android:text="Period"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/period_txt"
+                android:gravity="center"
+                android:textColor="@color/black2"
+                android:text="Select Period"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+           <com.google.android.material.card.MaterialCardView
+               android:id="@+id/custom_range_card"
+               android:layout_margin="8dp"
+               app:cardElevation="2.5dp"
+               android:visibility="gone"
+               android:layout_width="match_parent"
+               app:cardCornerRadius="9dp"
+               android:layout_height="wrap_content">
+               <LinearLayout
+                   android:orientation="vertical"
+                   android:padding="16dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+               <TextView
+                   android:textColor="@color/black2"
+                   android:textStyle="bold"
+                   android:text="Custom Range"
+                   android:textSize="16sp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"/>
+                   <TableLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:stretchColumns="2">
+                       <TableRow>
+                           <com.google.android.material.button.MaterialButton
+                               android:layout_weight="1"
+                               android:id="@+id/strart_range"
+                               android:text="Starting Range"
+                               android:layout_marginEnd="5dp"
+                               style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                               />
+                           <com.google.android.material.button.MaterialButton
+                               android:layout_weight="1"
+                               android:id="@+id/end_range"
+                               android:text=" Ending Range "
+                               android:layout_marginStart="5dp"
+                               style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                               />
+                       </TableRow>
+                   </TableLayout>
+               </LinearLayout>
+           </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

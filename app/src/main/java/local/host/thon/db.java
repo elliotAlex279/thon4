@@ -1,12 +1,12 @@
 package local.host.thon;
+import android.util.Log;
+
 import java.sql.*;
 import java.util.ArrayList;
 
 public class db {
 
     public static int dailyGeneratetotal() throws ClassNotFoundException {
-        Class.forName("com.mysql.jdbc.Driver");
-
         int temp=0;
         try(Connection conn = sql.getconnectio()){
             PreparedStatement stmt = conn.prepareStatement("select (select unit from dataSet where dates=? order by times desc limit 1) - (select unit from dataSet where dates =  (select  ? - interval 1 day) order by times desc limit 1) as data");
@@ -16,11 +16,26 @@ public class db {
             while (rs.next()){
                 temp = rs.getInt(1);}
         }
-        catch (SQLException e){
+        catch (SQLException | ClassNotFoundException e){
             System.out.println(e.getMessage());
         }
         return temp;
     }
+
+    public static void f() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+        Class.forName("com.mysql.jdbc.Driver").newInstance();
+        int temp=0;
+        try(Connection conn = sql.getconnectio()){
+            PreparedStatement stmt = conn.prepareStatement("select * from dataSet");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) Log.d("A", String.valueOf(rs.getInt(1)));
+        }
+        catch (SQLException | ClassNotFoundException e){
+            Log.d("E",e.getMessage());
+        }
+
+    }
+
     public static ArrayList<Integer> dailygenerate(String dates){
         ArrayList<Integer> res = new ArrayList<Integer>();
         try(Connection con = sql.getconnectio()){

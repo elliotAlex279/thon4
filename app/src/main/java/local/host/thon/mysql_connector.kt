@@ -15,8 +15,9 @@ import java.util.*
 @SuppressLint("SimpleDateFormat")
 fun main(): Unit = runBlocking{
     val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd")
-    val dt = Date();
-    print(db.dailyGeneratetotal());
+    val dt = Date("2021/06/26");
+
+    print(dt.toLocaleString());
 //    launch {
 //    try {
 //        // The newInstance() call is a work around for some
