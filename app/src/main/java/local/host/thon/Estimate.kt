@@ -32,9 +32,14 @@ class Estimate : Fragment() {
             val x = view.findViewById<TextInputEditText>(R.id.inp1)
             try{
                 val k = x.text.toString().toFloat()
-                val m = ((pre1.text.toString().toFloat() - x.text.toString().toFloat())  * 30F * 2F)
-                ans[1].text = m.toString()
-                ans[2].text = (70000F/m).toInt().toString()
+                if(pre1.text.toString().toFloat()>k){
+                        val m = ((pre1.text.toString().toFloat() - x.text.toString().toFloat())  * 30F * 2F)
+                        ans[1].text = m.toString()
+                        ans[2].text = (70000F/m).toInt().toString()
+                }else{
+                    Snackbar.make(view,"You're not earning anything",Snackbar.LENGTH_SHORT).show()
+                }
+
             }catch (e : Exception){
                 Snackbar.make(view,"Value is must needed thing in this calculation",Snackbar.LENGTH_SHORT).show()
             }
