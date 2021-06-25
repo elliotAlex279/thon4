@@ -31,7 +31,7 @@ class Summary : Fragment() {
         val view =  inflater.inflate(R.layout.summary, container, false)
         val pBtn = view.findViewById<MaterialCardView>(R.id.pSelectBtn)
         val stR = arrayOf<MaterialButton>(view.findViewById(R.id.strart_range),view.findViewById(R.id.end_range))
-        var range = arrayOf("","")
+        val range = arrayOf("","")
         stR[0].setOnClickListener {
             val c = Calendar.getInstance()
             val year = c.get(Calendar.YEAR)
@@ -44,7 +44,7 @@ class Summary : Fragment() {
                 val df = SimpleDateFormat("dd-MM-yyyy")
 
                 stR[0].text = df.format(Date("$year/${monthOfYear+1}/${dayOfMonth}"));
-                range
+                range[0] = "$year-${monthOfYear+1}-${dayOfMonth}";
             }, year, month, day)
 
             dpd.show()

@@ -18,6 +18,7 @@ import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Callback
@@ -32,6 +33,8 @@ import kotlin.math.floor
 import lecho.lib.hellocharts.view.LineChartView
 
 import lecho.lib.hellocharts.view.ColumnChartView
+import org.json.JSONArray
+import java.lang.reflect.Array
 
 
 var curGenT : Long? = null
@@ -178,29 +181,89 @@ class Home : Fragment() {
         val unVal = view.findViewById<TextView>(R.id.curr_unit_gen)
         curGenT = Date().time
         val dateFormatB: DateFormat = SimpleDateFormat("yyyy-MM-dd")
-        Handler().postDelayed({
-            curUnPrg.visibility = View.GONE
-            lastcurr.visibility = View.VISIBLE
-            unVal.visibility = View.VISIBLE
-            unVal.text = "2 Units"
-        },1500)
+            val queue = Volley.newRequestQueue(view.context)
+            val dateFormat: DateFormat = SimpleDateFormat("yyyy/MM/dd")
+            val dt = Date(dateFormat.format(Date()) + " 6:00 AM");
+            val ar = arrayOf(Date(dt.time+0),Date(dt.time+14400000L),Date(dt.time+(2*14400000L)),Date(dt.time+(3*14400000L)),Date(dt.time+(4*14400000)));
+// Request a string response from the provided URL.
+            val slts = arrayOf<MaterialButton>(view.findViewById(R.id.slt1),view.findViewById(R.id.slt2),view.findViewById(R.id.slt3),view.findViewById(R.id.slt4))
+
         val crd = view.findViewById<TextView>(R.id.tot_unit_gen)
         val prg2 = view.findViewById<ProgressBar>(R.id.tot_curGen_prg)
-        prg2.visibility = View.GONE
-        crd.visibility = View.VISIBLE
-        crd.text = "50 Units"
+        val stringRequest = StringRequest(
+                Request.Method.GET, "${addr}/gen/${dateFormatB.format(Date())}",
+                { response ->
+                    curUnPrg.visibility = View.GONE
+                    lastcurr.visibility = View.VISIBLE
+                    unVal.visibility = View.VISIBLE
+                    val a = JSONArray(response)
+                    val lastDayFinal = ((a[2] as JSONArray)[0] as JSONObject)["lastDayFinal"].toString().toInt()
+                    val k = a[3] as JSONArray;
+                    val am = arrayOf((k[0] as JSONObject)["unit"].toString().toInt(),(k[1] as JSONObject)["unit"].toString().toInt(),(k[2] as JSONObject)["unit"].toString().toInt(),(k[3] as JSONObject)["unit"].toString().toInt())
+                    var tot = 0;
+                    if(ar[1].time <=Date().time){
+                        slts[0].text = (am[0] - lastDayFinal).toString()
+                        tot+=(am[0] - lastDayFinal);
+                    }
+                    if(ar[2].time <=Date().time){
+                        slts[1].text = (am[1] - am[0]).toString()
+                        tot+=(am[1] - am[0])
+                    }
+                    if(ar[3].time <= Date().time){
+                        slts[2].text = (am[2] - am[1]).toString()
+                        tot+=am[2] - am[1]
+                    }
+                    if(ar[4].time <= Date().time){
+                        slts[3].text = (am[3] - am[2]).toString()
+                        tot+=am[3] - am[2]
+                    }
+                    unVal.text = tot.toString()
+                    crd.text = (lastDayFinal+tot).toString()
+                    prg2.visibility = View.GONE
+                    crd.visibility = View.VISIBLE
+                },{err->Snackbar.make(view,err.toString(),Snackbar.LENGTH_SHORT).show()})
+            queue.add(stringRequest)
+
 
         curUnCard.setOnClickListener {
             curUnPrg.visibility = View.VISIBLE
             lastcurr.visibility = View.GONE
             unVal.visibility = View.GONE
-            Handler().postDelayed({
-                curUnPrg.visibility = View.GONE
-                lastcurr.visibility = View.VISIBLE
-                unVal.visibility = View.VISIBLE
-                curGenT = Date().time
-                Snackbar.make(view,"Current Generation Updated",Snackbar.LENGTH_SHORT).show()
-            },1500)
+            val stringRequestK = StringRequest(
+                Request.Method.GET, "${addr}/gen/${dateFormatB.format(Date())}",
+                { response ->
+                    curUnPrg.visibility = View.GONE
+                    crd.visibility = View.GONE
+                    lastcurr.visibility = View.VISIBLE
+                    unVal.visibility = View.VISIBLE
+                    val a = JSONArray(response)
+                    val lastDayFinal = ((a[2] as JSONArray)[0] as JSONObject)["lastDayFinal"].toString().toInt()
+                    val k = a[3] as JSONArray;
+                    val am = arrayOf((k[0] as JSONObject)["unit"].toString().toInt(),(k[1] as JSONObject)["unit"].toString().toInt(),(k[2] as JSONObject)["unit"].toString().toInt(),(k[3] as JSONObject)["unit"].toString().toInt())
+                    var tot = 0;
+                    if(ar[1].time <=Date().time){
+                        slts[0].text = (am[0] - lastDayFinal).toString()
+                        tot+=(am[0] - lastDayFinal);
+                    }
+                    if(ar[2].time <=Date().time){
+                        slts[1].text = (am[1] - am[0]).toString()
+                        tot+=(am[1] - am[0])
+                    }
+                    if(ar[3].time <= Date().time){
+                        slts[2].text = (am[2] - am[1]).toString()
+                        tot+=am[2] - am[1]
+                    }
+                    if(ar[4].time <= Date().time){
+                        slts[3].text = (am[3] - am[2]).toString()
+                        tot+=am[3] - am[2]
+                    }
+                    unVal.text = tot.toString()
+                    crd.text = (lastDayFinal+tot).toString()
+                    prg2.visibility = View.GONE
+                    crd.visibility = View.VISIBLE
+                    Snackbar.make(view,"Current Generation Updated",Snackbar.LENGTH_SHORT).show()
+                },{err->Snackbar.make(view,err.toString(),Snackbar.LENGTH_SHORT).show()})
+            queue.add(stringRequestK)
         }
         checkWeather(view)
         view.findViewById<CardView>(R.id.weather_card).setOnClickListener {

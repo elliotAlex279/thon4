@@ -25,6 +25,8 @@ import java.util.*
 import androidx.annotation.NonNull
 import android.media.MediaPlayer
 
+val addr = "https://27c8a621751a.ngrok.io";
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

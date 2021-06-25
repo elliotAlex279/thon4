@@ -327,7 +327,8 @@
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     />
                 <com.google.android.material.button.MaterialButton
-                    android:text="1"
+                    android:text="-"
+                    android:id="@+id/slt1"
                     android:layout_marginStart="4dp"
                     android:layout_weight="1"
                     android:textColor="@color/black2"
@@ -343,7 +344,8 @@
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     />
                 <com.google.android.material.button.MaterialButton
-                    android:text="1"
+                    android:text="-"
+                    android:id="@+id/slt2"
                     android:layout_marginStart="4dp"
                     android:layout_weight="1"
                     android:textColor="@color/black2"
@@ -360,6 +362,7 @@
                     />
                 <com.google.android.material.button.MaterialButton
                     android:text="-"
+                    android:id="@+id/slt3"
                     android:layout_marginStart="4dp"
                     android:layout_weight="1"
                     android:textColor="@color/black2"
@@ -376,6 +379,7 @@
                     />
                 <com.google.android.material.button.MaterialButton
                     android:text="-"
+                    android:id="@+id/slt4"
                     android:layout_marginStart="4dp"
                     android:layout_weight="1"
                     android:textColor="@color/black2"
