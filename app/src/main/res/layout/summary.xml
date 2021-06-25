@@ -118,8 +118,12 @@
                    </TableLayout>
                </LinearLayout>
            </com.google.android.material.card.MaterialCardView>
-    <com.jjoe64.graphview.GraphView
+    <org.eazegraph.lib.charts.BarChart
+        android:id="@+id/barchart"
         android:layout_width="match_parent"
-        android:layout_height="200dip"
-        android:id="@+id/barChart" />
+        android:layout_height="256dp"
+        android:padding="10dp"
+        app:egFixedBarWidth="true"
+        app:egBarWidth="20dp"
+        app:egLegendHeight="40dp"/>
 </LinearLayout>

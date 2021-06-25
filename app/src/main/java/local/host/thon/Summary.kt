@@ -8,6 +8,7 @@ import android.os.StrictMode
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import android.widget.DatePicker
 import android.widget.RadioGroup
 import android.widget.TextView
@@ -21,19 +22,13 @@ import com.jjoe64.graphview.series.BarGraphSeries
 import com.jjoe64.graphview.series.DataPoint
 import java.text.SimpleDateFormat
 import java.util.*
-import com.jjoe64.graphview.series.LineGraphSeries
-import com.jjoe64.graphview.ValueDependentColor
 
-
-
-
-
-
-
+import org.eazegraph.lib.charts.BarChart
+import org.eazegraph.lib.models.BarModel
 
 
 class Summary : Fragment() {
-    @SuppressLint("SetTextI18n", "SimpleDateFormat")
+    @SuppressLint("SetTextI18n", "SimpleDateFormat", "SetJavaScriptEnabled")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -96,25 +91,18 @@ class Summary : Fragment() {
                 }
                 .show()
         }
-        val chart = view.findViewById<GraphView>(R.id.barChart)
-        val series: BarGraphSeries<DataPoint> = BarGraphSeries(
-            arrayOf(
-                DataPoint(Date("2021/06/21"), 1F.toDouble()),
-                DataPoint(Date("2021/06/22"), 5F.toDouble()),
-                DataPoint(Date("2021/06/23"), 3F.toDouble()),
-                DataPoint(Date("2021/06/24"), 2F.toDouble()),
-                DataPoint(Date("2021/06/25"), 6F.toDouble())
-            )
-        )
-        series.isAnimated = true
-        series.spacing = 5
-        chart.viewport.setMaxX(Date("2021/06/25").time.toDouble())
-        chart.viewport.setMinX(Date("2021/06/21").time.toDouble())
-        series.isDrawValuesOnTop = true;
-        series.setValuesOnTopColor(Color.RED);
-        chart.viewport.isScalable=true
-        chart.viewport.isScrollable = true
-        chart.addSeries(series)
+        val mBarChart = view.findViewById(R.id.barchart) as BarChart
+
+        mBarChart.addBar(BarModel(2.3f, -0xedcbaa))
+        mBarChart.addBar(BarModel(2f, -0xcbcbaa))
+        mBarChart.addBar(BarModel(3.3f, -0xa9cbaa))
+        mBarChart.addBar(BarModel(1.1f, -0x78c0aa))
+        mBarChart.addBar(BarModel(2.7f, -0xa9480f))
+        mBarChart.addBar(BarModel(2f, -0xcbcbaa))
+        mBarChart.addBar(BarModel(0.4f, -0xe00b54))
+        mBarChart.addBar(BarModel(4f, -0xe45b1a))
+
+        mBarChart.startAnimation()
         return view;
     }
 }
