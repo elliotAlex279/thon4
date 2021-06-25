@@ -22,7 +22,8 @@ class Estimate : Fragment() {
         super.onCreate(savedInstanceState)
         val view =  inflater.inflate(R.layout.estimate, container, false)
         val btn1 = view.findViewById<MaterialButton>(R.id.cal_btn1)
-        val ans1 = view.findViewById<TextView>(R.id.cal1)
+            view.findViewById<TextView>(R.id.cal1).text = "1.23"
+        val ans1 = view.findViewById<TextView>(R.id.ans1)
         btn1.setOnClickListener {
             val x = view.findViewById<TextInputEditText>(R.id.inp1)
             ans1.text = (x.text.toString().toFloat() * 30F * 2F).toString()
