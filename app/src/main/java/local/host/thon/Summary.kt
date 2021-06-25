@@ -22,6 +22,10 @@ import com.jjoe64.graphview.series.DataPoint
 import java.text.SimpleDateFormat
 import java.util.*
 import com.jjoe64.graphview.series.LineGraphSeries
+import com.jjoe64.graphview.ValueDependentColor
+
+
+
 
 
 
@@ -102,6 +106,11 @@ class Summary : Fragment() {
                 DataPoint(4F.toDouble(), 6F.toDouble())
             )
         )
+        series.spacing = 5
+        series.isDrawValuesOnTop = true;
+        series.setValuesOnTopColor(Color.RED);
+        chart.viewport.isScalable=true
+        chart.viewport.isScrollable = true
         chart.addSeries(series)
         return view;
     }
