@@ -99,14 +99,17 @@ class Summary : Fragment() {
         val chart = view.findViewById<GraphView>(R.id.barChart)
         val series: BarGraphSeries<DataPoint> = BarGraphSeries(
             arrayOf(
-                DataPoint(0F.toDouble(), 1F.toDouble()),
-                DataPoint(1F.toDouble(), 5F.toDouble()),
-                DataPoint(2F.toDouble(), 3F.toDouble()),
-                DataPoint(3F.toDouble(), 2F.toDouble()),
-                DataPoint(4F.toDouble(), 6F.toDouble())
+                DataPoint(Date("2021/06/21"), 1F.toDouble()),
+                DataPoint(Date("2021/06/22"), 5F.toDouble()),
+                DataPoint(Date("2021/06/23"), 3F.toDouble()),
+                DataPoint(Date("2021/06/24"), 2F.toDouble()),
+                DataPoint(Date("2021/06/25"), 6F.toDouble())
             )
         )
+        series.isAnimated = true
         series.spacing = 5
+        chart.viewport.setMaxX(Date("2021/06/25").time.toDouble())
+        chart.viewport.setMinX(Date("2021/06/21").time.toDouble())
         series.isDrawValuesOnTop = true;
         series.setValuesOnTopColor(Color.RED);
         chart.viewport.isScalable=true
