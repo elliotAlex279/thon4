@@ -35,8 +35,9 @@
             <TextView
                 android:id="@+id/period_txt"
                 android:gravity="center"
-                android:textColor="@color/black2"
+                android:textColor="@color/purple_500"
                 android:text="Select Period"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />
@@ -112,9 +113,63 @@
                                    android:layout_height="wrap_content"/>
                            </RadioGroup>
                        </TableRow>
+                       <TableRow>
+                           <com.google.android.material.button.MaterialButton
+                               android:layout_weight="1"
+                               android:text="Analyze"
+                               android:id="@+id/cust_graph_btn"
+                               />
+                       </TableRow>
                    </TableLayout>
                </LinearLayout>
            </com.google.android.material.card.MaterialCardView>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_margin="8dp"
+        app:cardElevation="2.5dp"
+        android:id="@+id/graphCard"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        app:cardCornerRadius="9dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:padding="8dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ProgressBar
+                android:id="@+id/grph_load"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/purple_700"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/graphMode"
+                android:visibility="gone"
+                app:checkedChip="@+id/barMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/barMode"
+                    android:text="Bar"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/bg_chip"
+                    app:chipStrokeColor="@color/stoke_chip"
+                    app:chipStrokeWidth="1.5dp"
+                    app:checkedIconEnabled="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/LineMode"
+                    android:checkable="true"
+                    android:text="Line"
+                    app:checkedIconEnabled="false"
+                    app:chipBackgroundColor="@color/bg_chip"
+                    app:chipStrokeColor="@color/stoke_chip"
+                    app:chipStrokeWidth="1.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.chip.ChipGroup>
 <HorizontalScrollView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -128,4 +183,6 @@
 
     </LinearLayout>
 </HorizontalScrollView>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 </LinearLayout>
