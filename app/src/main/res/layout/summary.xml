@@ -148,9 +148,12 @@
                 android:indeterminate="true"
                 android:indeterminateTint="@color/purple_700"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/graphMode"
+            <GridLayout
                 android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/graphMode">
+            <com.google.android.material.chip.ChipGroup
                 app:checkedChip="@+id/barMode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -175,6 +178,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </com.google.android.material.chip.ChipGroup>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/get_data"
+                    android:layout_gravity="end"
+                    android:text="Peak &amp; Nadir"
+                    app:chipBackgroundColor="@color/bg_chip"
+                    app:chipStrokeColor="@color/stoke_chip"
+                    app:chipStrokeWidth="1.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </GridLayout>
 <HorizontalScrollView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

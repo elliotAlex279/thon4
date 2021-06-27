@@ -8,13 +8,11 @@ import android.os.Bundle
 import android.os.StrictMode
 import android.util.DisplayMetrics
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.ProgressBar
-import android.widget.RadioGroup
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
@@ -22,8 +20,8 @@ import com.android.volley.toolbox.Volley
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import org.eazegraph.lib.charts.BarChart
 import org.eazegraph.lib.charts.ValueLineChart
@@ -35,10 +33,44 @@ import org.json.JSONObject
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 import kotlin.collections.LinkedHashMap
+import android.widget.ArrayAdapter
+
+
+
 
 
 class Summary : Fragment() {
+
+    @SuppressLint("InflateParams")
+    private fun showQuick(view : View, peak : Pair<Int,ArrayList<String>>, nadir : Pair<Int,ArrayList<String>>){
+        val infl = layoutInflater.inflate(R.layout.quick_data,null)
+        val cls = infl.findViewById<ImageView>(R.id.clsD)
+        val rdb = view.findViewById<RadioGroup>(R.id.one)
+        val listView = arrayListOf<ListView>(infl.findViewById(R.id.maxP),infl.findViewById(R.id.minP))
+        val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
+            view.context,R.layout.tv, R.id.k, peak.second
+        )
+        val adapter2: ArrayAdapter<String> = ArrayAdapter<String>(
+            view.context,R.layout.tv, R.id.k, nadir.second
+        )
+        listView[0].adapter = adapter
+        listView[1].adapter = adapter2
+        infl.findViewById<TextView>(R.id.maxU).text = peak.first.toString()
+        infl.findViewById<TextView>(R.id.minU).text = nadir.first.toString()
+        infl.findViewById<TextView>(R.id.itC1).text = peak.second.size.toString()
+        infl.findViewById<TextView>(R.id.itC2).text = nadir.second.size.toString()
+        val mV = MaterialAlertDialogBuilder(view.context)
+            .setView(infl)
+            .setCancelable(true)
+            .create()
+        cls.setOnClickListener {
+            mV.cancel()
+        }
+        mV.show()
+    }
 
     private fun resetGrp(view : View){
         val btns = arrayOf<Chip>(view.findViewById(R.id.barMode),view.findViewById(R.id.LineMode))
@@ -67,7 +99,15 @@ class Summary : Fragment() {
         val url = "${addr}/graph/${dt},${days}"
         view.findViewById<MaterialCardView>(R.id.graphCard).visibility = View.VISIBLE
         view.findViewById<ProgressBar>(R.id.grph_load).visibility = View.VISIBLE
-        view.findViewById<ChipGroup>(R.id.graphMode).visibility = View.GONE
+        view.findViewById<GridLayout>(R.id.graphMode).visibility = View.GONE
+        val tmp = cal
+        val btnA = view.findViewById<Chip>(R.id.get_data)
+        var max = Int.MIN_VALUE;
+        var min = Int.MAX_VALUE
+        val listMax = ArrayList<String>();
+        val listMin = ArrayList<String>();
+        tmp.add(Calendar.DATE,-1*days + 1);
+        val cFm = SimpleDateFormat("E MMM d, yyyy")
         when(days) {
             7 -> {
                 val stringRequest = StringRequest(
@@ -89,13 +129,28 @@ class Summary : Fragment() {
                             val m = arr[i] as JSONObject;
                             val n = arr[i - 1] as JSONObject;
                             daydt = m["unit"].toString().toInt() - n["unit"].toString().toInt()
+                            if(daydt>max){
+                                listMax.clear()
+                                max=daydt
+                            }
+                            if(daydt==max){
+                                listMax.add(cFm.format(tmp.time))
+                            }
+                            if(daydt<min){
+                                listMin.clear()
+                                min=daydt
+                            }
+                            if(daydt==min){
+                                listMin.add(cFm.format(tmp.time))
+                            }
+                            tmp.add(Calendar.DATE,1)
                             mBarChart.addBar(BarModel(week[dayOfWeek], daydt.toFloat(), -0xedcbaa))
                             series.addPoint(ValueLinePoint(week[dayOfWeek], daydt.toFloat()))
                             if (dayOfWeek == 7) dayOfWeek = 1;
                             else dayOfWeek++;
                         }
                         view.findViewById<ProgressBar>(R.id.grph_load).visibility = View.GONE
-                        view.findViewById<ChipGroup>(R.id.graphMode).visibility = View.VISIBLE
+                        view.findViewById<GridLayout>(R.id.graphMode).visibility = View.VISIBLE
                         mBarChart.layoutParams = ll
                         mLineChart.layoutParams = ll
                         mLineChart.visibility = View.GONE
@@ -141,6 +196,21 @@ class Summary : Fragment() {
                             val m = arr[i] as JSONObject;
                             val n = arr[i - 1] as JSONObject;
                             daydt = m["unit"].toString().toInt() - n["unit"].toString().toInt()
+                            if(daydt>max){
+                                listMax.clear()
+                                max=daydt
+                            }
+                            if(daydt==max){
+                                listMax.add(cFm.format(tmp.time))
+                            }
+                            if(daydt<min){
+                                listMin.clear()
+                                min=daydt
+                            }
+                            if(daydt==min){
+                                listMin.add(cFm.format(tmp.time))
+                            }
+                            tmp.add(Calendar.DATE,1)
                             val dtF = SimpleDateFormat("d MMM")
                             mBarChart.addBar(
                                 BarModel(
@@ -154,7 +224,7 @@ class Summary : Fragment() {
                         }
                         mBarChart.layoutParams = ll
                         view.findViewById<ProgressBar>(R.id.grph_load).visibility = View.GONE
-                        view.findViewById<ChipGroup>(R.id.graphMode).visibility = View.VISIBLE
+                        view.findViewById<GridLayout>(R.id.graphMode).visibility = View.VISIBLE
                         mLineChart.layoutParams = ll
                         mLineChart.visibility = View.GONE
                         mLineChart.addSeries(series);
@@ -199,6 +269,21 @@ class Summary : Fragment() {
                             val m = arr[i] as JSONObject;
                             val n = arr[i - 1] as JSONObject;
                             daydt = m["unit"].toString().toInt() - n["unit"].toString().toInt()
+                            if(daydt>max){
+                                listMax.clear()
+                                max=daydt
+                            }
+                            if(daydt==max){
+                                listMax.add(cFm.format(tmp.time))
+                            }
+                            if(daydt<min){
+                                listMin.clear()
+                                min=daydt
+                            }
+                            if(daydt==min){
+                                listMin.add(cFm.format(tmp.time))
+                            }
+                            tmp.add(Calendar.DATE,1)
                             val dtF = SimpleDateFormat("dd-MM")
                             mBarChart.addBar(
                                 BarModel(
@@ -213,7 +298,7 @@ class Summary : Fragment() {
                         }
                         mBarChart.layoutParams = ll
                         view.findViewById<ProgressBar>(R.id.grph_load).visibility = View.GONE
-                        view.findViewById<ChipGroup>(R.id.graphMode).visibility = View.VISIBLE
+                        view.findViewById<GridLayout>(R.id.graphMode).visibility = View.VISIBLE
                         mLineChart.layoutParams = ll
                         mLineChart.visibility = View.GONE
                         mLineChart.addSeries(series);
@@ -241,7 +326,9 @@ class Summary : Fragment() {
                 queue.add(stringRequest)
             }
         }
-
+        btnA.setOnClickListener {
+            showQuick(view,Pair(max,listMax),Pair(min,listMin))
+        }
     }
 
     @SuppressLint("SimpleDateFormat", "ResourceType", "CutPasteId")
@@ -251,6 +338,7 @@ class Summary : Fragment() {
         val range = arrayOf(Date(),Date())
         val one = view.findViewById<RadioGroup>(R.id.one)
         one.check(R.id.daily);
+
         stR[0].setOnClickListener {
             val c = Calendar.getInstance()
             val year = c.get(Calendar.YEAR)
@@ -304,9 +392,17 @@ class Summary : Fragment() {
         val queue = Volley.newRequestQueue(view.context)
         val pr = view.findViewById<LinearLayout>(R.id.graphCanvas)
         btn.setOnClickListener {
+            var max = Int.MIN_VALUE;
+            var min = Int.MAX_VALUE
+            val listMax = ArrayList<String>();
+            val listMin = ArrayList<String>();
+            val btnA = view.findViewById<Chip>(R.id.get_data)
+            btnA.setOnClickListener {
+                showQuick(view,Pair(max,listMax),Pair(min,listMin))
+            }
             pr.removeAllViews()
             resetGrp(view);
-            view.findViewById<ChipGroup>(R.id.graphMode).visibility = View.GONE
+            view.findViewById<GridLayout>(R.id.graphMode).visibility = View.GONE
             val dfm = SimpleDateFormat("yyyy-MM-dd")
             val mn = arrayOf(SimpleDateFormat("dd-MM-yyyy"),SimpleDateFormat("MMM-yyyy"),SimpleDateFormat("yyyy"))
             val dt1 = dfm.format(range[0]);
@@ -343,14 +439,45 @@ class Summary : Fragment() {
                         series.setColor(0xFF56B7F1.toInt());
                         when(one.checkedRadioButtonId){
                             R.id.daily -> {
+                                val cFm = SimpleDateFormat("E MMM d, yyyy")
+                                val cl = Calendar.getInstance()
                                 for(i in daily){
                                     len+=135;
+                                    cl.set(i.key.split('-')[2].toInt(),i.key.split('-')[1].toInt(),i.key.split('-')[0].toInt())
+                                    if(max<i.value){
+                                        listMax.clear()
+                                        max = i.value
+                                    }
+                                    if(max==i.value){
+                                        listMax.add(cFm.format(cl.time))
+                                    }
+                                    if(min>i.value){
+                                        listMin.clear()
+                                        min = i.value
+                                    }
+                                    if(min==i.value){
+                                        listMin.add(cFm.format(cl.time))
+                                    }
                                     mBarChart.addBar(BarModel(i.key.split('-')[0]+'-'+i.key.split('-')[1],i.value.toFloat(),-0xedcbaa))
                                     series.addPoint(ValueLinePoint(i.key.split('-')[0]+'-'+i.key.split('-')[1],i.value.toFloat()))
                                 }
                             }
                             R.id.monthly -> {
                                 for(i in month){
+                                    if(max<i.value){
+                                        listMax.clear()
+                                        max = i.value
+                                    }
+                                    if(max==i.value){
+                                        listMax.add(i.key)
+                                    }
+                                    if(min>i.value){
+                                        listMin.clear()
+                                        min = i.value
+                                    }
+                                    if(min==i.value){
+                                        listMin.add(i.key)
+                                    }
                                     len+=135;
                                     mBarChart.addBar(BarModel(i.key.split('-')[0],i.value.toFloat(),-0xedcbaa))
                                     series.addPoint(ValueLinePoint(i.key.split('-')[0],i.value.toFloat()))
@@ -359,6 +486,20 @@ class Summary : Fragment() {
                             R.id.yearly -> {
                                 for(i in yearly){
                                     len+=135;
+                                    if(max<i.value){
+                                        listMax.clear()
+                                        max = i.value
+                                    }
+                                    if(max==i.value){
+                                        listMax.add(i.key)
+                                    }
+                                    if(min>i.value){
+                                        listMin.clear()
+                                        min = i.value
+                                    }
+                                    if(min==i.value){
+                                        listMin.add(i.key)
+                                    }
                                     mBarChart.addBar(BarModel(i.key,i.value.toFloat(),-0xedcbaa))
                                     series.addPoint(ValueLinePoint(i.key,i.value.toFloat()))
                                 }
@@ -389,7 +530,7 @@ class Summary : Fragment() {
                                     view.findViewById<Chip>(R.id.barMode).isChecked = false
                                 }
                         view.findViewById<ProgressBar>(R.id.grph_load).visibility = View.GONE
-                        view.findViewById<ChipGroup>(R.id.graphMode).visibility = View.VISIBLE
+                        view.findViewById<GridLayout>(R.id.graphMode).visibility = View.VISIBLE
                        Log.d("SIZE",k.length().toString())
                     },{})
                 queue.add(stringRequest)
@@ -416,7 +557,7 @@ class Summary : Fragment() {
                 .setTitle("Select Period")
                 .setItems(items) { dialog, which ->
                     view.findViewById<MaterialCardView>(R.id.graphCard).visibility = View.GONE
-                    view.findViewById<ChipGroup>(R.id.graphMode).visibility = View.GONE
+                    view.findViewById<GridLayout>(R.id.graphMode).visibility = View.GONE
                     if(which==items.size-1){
                         view.findViewById<MaterialCardView>(R.id.custom_range_card).visibility = View.VISIBLE
                     }else{

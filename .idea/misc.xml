@@ -11,7 +11,10 @@
         <entry key="app/src/main/res/layout/estimate.xml" value="0.25" />
         <entry key="app/src/main/res/layout/home.xml" value="0.335" />
         <entry key="app/src/main/res/layout/profile.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/quick_data.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/sample_text_view.xml" value="0.375" />
         <entry key="app/src/main/res/layout/summary.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/tv.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.12239583333333333" />
       </map>
     </option>
