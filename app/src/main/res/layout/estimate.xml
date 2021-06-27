@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:padding="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:id="@+id/est1"
+    android:layout_below="@id/est2"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="5.5dp"
+    app:cardBackgroundColor="@color/white"
+    app:strokeWidth="0dp"
+    app:strokeColor="#000000FF"
+    android:visibility="gone"
+    android:clickable="false"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="2dp"
+    app:cardCornerRadius="9dp"
+    android:layout_centerHorizontal="true"
+    app:cardElevation="2.5dp">
         <LinearLayout
             android:orientation="vertical"
             android:padding="16dp"
@@ -29,90 +47,156 @@
                 android:text="Calculate"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_marginTop="8dp"
-                android:textSize="18sp"
-                android:textColor="@color/black2"
-                android:layout_gravity="center"
-                android:text="Daily Average Generated"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/cal1"
-                android:layout_marginTop="8dp"
-                android:textSize="24sp"
-                android:textColor="@color/black"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
         </LinearLayout>
-
-    <com.google.android.material.card.MaterialCardView
-
+</androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
+        android:id="@+id/est2"
+        android:layout_marginEnd="5.5dp"
+        app:cardBackgroundColor="@color/white"
+        app:strokeWidth="0dp"
+        app:strokeColor="#000000FF"
+        android:clickable="false"
         android:layout_marginTop="16dp"
-        android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:padding="8dp"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            <TextView
-                android:textSize="18sp"
-                android:textColor="@color/black2"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:text="Rate per unit"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
-            <TextView
-                android:id="@+id/ans1"
-                android:textSize="22sp"
-                android:gravity="center"
-                android:layout_marginVertical="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:textSize="18sp"
-                android:textColor="@color/black2"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:text="Monthly Earning (approx)"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
-                <TextView
-                    android:id="@+id/ans2"
-                    android:textSize="22sp"
-                    android:gravity="center"
-                    android:layout_marginVertical="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_marginTop="8dp"
-        android:layout_height="wrap_content">
-        <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="2dp"
+        app:cardCornerRadius="9dp"
+        android:layout_centerHorizontal="true"
+        app:cardElevation="2.5dp">
+        <TableLayout
+            android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:stretchColumns="*"
+            android:shrinkColumns="*">
+            <TableRow>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:textSize="12.5sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black2"
+                        android:layout_gravity="center"
+                        android:text="Daily Average Generated"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/cal1"
+                        android:layout_marginTop="8dp"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:textSize="12.5sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black2"
+                        android:layout_gravity="center"
+                        android:text="Rate per Unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/ans1"
+                        android:layout_marginTop="8dp"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </TableRow>
+        </TableLayout>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:visibility="gone"
+        android:layout_below="@id/est1"
+        android:layout_width="match_parent"
+        android:id="@+id/est3"
+        android:layout_marginEnd="5.5dp"
+        app:cardBackgroundColor="@color/white"
+        app:strokeWidth="0dp"
+        app:strokeColor="#000000FF"
+        android:clickable="false"
+        android:layout_marginTop="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="2dp"
+        app:cardCornerRadius="9dp"
+        android:layout_centerHorizontal="true"
+        app:cardElevation="2.5dp">
+    <TableLayout
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        android:shrinkColumns="*">
+        <TableRow>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black2"
+                    android:layout_gravity="center"
+                    android:text="Monthly Earning (approx)"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/ans2"
+                    android:layout_marginTop="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black2"
+                    android:layout_gravity="center"
+                    android:text="ETRI"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/ans3"
+                    android:layout_marginTop="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+    </androidx.cardview.widget.CardView>
+
     <TextView
-        android:textSize="18sp"
-        android:textColor="@color/black2"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-                android:text="Estimated time to recover your investment"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
-        <TextView
-            android:id="@+id/ans3"
-            android:textSize="22sp"
-            android:gravity="center"
-            android:layout_marginVertical="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/est3"
+        android:layout_marginTop="16dp"
+        android:padding="8dp"
+        android:text="*All periodic calculations are on monthly basis\n\n*ETRI : Estimated Time To Recover Your Investment"
+        android:textSize="10.5sp"
+        android:textStyle="italic"
+        tools:ignore="HardcodedText,SmallSp" />
+   </RelativeLayout>

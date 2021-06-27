@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    tools:ignore="HardcodedText"
     android:layout_width="match_parent"
     android:padding="16dp"
     android:layout_height="match_parent">
@@ -9,9 +11,10 @@
            <TextView
                android:textSize="40sp"
                android:textColor="@color/black2"
-               android:text="Analysis"
+               android:text="Analytics"
+               android:layout_marginStart="8dp"
                android:layout_width="wrap_content"
-               android:layout_height="wrap_content"/>
+               android:layout_height="wrap_content" />
     <com.google.android.material.card.MaterialCardView
         app:cardElevation="2.5dp"
         android:clickable="true"
@@ -19,7 +22,8 @@
         android:layout_margin="8dp"
         android:layout_width="match_parent"
         app:cardCornerRadius="9dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:focusable="true">
         <LinearLayout
             android:orientation="horizontal"
             android:padding="16dp"
@@ -87,7 +91,8 @@
                            <RadioGroup
                                android:id="@+id/one"
                                android:layout_weight="1"
-                               android:orientation="horizontal">
+                               android:orientation="horizontal"
+                               tools:ignore="UselessParent">
                                <RadioButton
                                    android:layout_gravity="center"
                                    android:id="@+id/daily"

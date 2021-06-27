@@ -1,4 +1,6 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_home"
         android:enabled="true"
@@ -7,13 +9,14 @@
     <item
         android:id="@+id/nav_summary"
         android:enabled="true"
-        android:title="Past Data"
-        android:icon="@drawable/ic_baseline_history_toggle_off_24"/>
+        android:title="Analytics"
+        android:icon="@drawable/ic_outline_analytics_24"
+        />
     <item
         android:id="@+id/nav_estimate"
         android:enabled="true"
-        android:title="Estimate"
-        android:icon="@drawable/ic_baseline_query_stats_24"/>
+        android:title="Estimation Calculator"
+        android:icon="@drawable/ic_outline_calculate_24"/>
     <item
         android:id="@+id/nav_profile"
         android:enabled="true"

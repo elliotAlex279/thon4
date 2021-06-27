@@ -39,8 +39,16 @@ import kotlin.collections.LinkedHashMap
 
 
 class Summary : Fragment() {
+
+    private fun resetGrp(view : View){
+        val btns = arrayOf<Chip>(view.findViewById(R.id.barMode),view.findViewById(R.id.LineMode))
+        btns[0].isChecked = true
+        btns[1].isChecked = false
+    }
+
     @SuppressLint("SetTextI18n", "SimpleDateFormat", "SetJavaScriptEnabled", "CutPasteId")
     private fun createGraph(days : Int,view : View){
+        resetGrp(view);
         val pr = view.findViewById<LinearLayout>(R.id.graphCanvas)
         val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd")
         val ftt = Date()
@@ -238,6 +246,7 @@ class Summary : Fragment() {
 
     @SuppressLint("SimpleDateFormat", "ResourceType", "CutPasteId")
     private fun evaluateCustomGraph(view : View){
+        resetGrp(view)
         val stR = arrayOf<MaterialButton>(view.findViewById(R.id.strart_range),view.findViewById(R.id.end_range))
         val range = arrayOf(Date(),Date())
         val one = view.findViewById<RadioGroup>(R.id.one)
@@ -296,9 +305,10 @@ class Summary : Fragment() {
         val pr = view.findViewById<LinearLayout>(R.id.graphCanvas)
         btn.setOnClickListener {
             pr.removeAllViews()
+            resetGrp(view);
             view.findViewById<ChipGroup>(R.id.graphMode).visibility = View.GONE
             val dfm = SimpleDateFormat("yyyy-MM-dd")
-            val mn = arrayOf(SimpleDateFormat("dd-MM"),SimpleDateFormat("MMM"),SimpleDateFormat("yyyy"))
+            val mn = arrayOf(SimpleDateFormat("dd-MM-yyyy"),SimpleDateFormat("MMM-yyyy"),SimpleDateFormat("yyyy"))
             val dt1 = dfm.format(range[0]);
             val dt2 = dfm.format(range[1]);
             val url = "${addr}/bet/${dt1},${dt2}"
@@ -335,15 +345,15 @@ class Summary : Fragment() {
                             R.id.daily -> {
                                 for(i in daily){
                                     len+=135;
-                                    mBarChart.addBar(BarModel(i.key,i.value.toFloat(),-0xedcbaa))
-                                    series.addPoint(ValueLinePoint(i.key,i.value.toFloat()))
+                                    mBarChart.addBar(BarModel(i.key.split('-')[0]+'-'+i.key.split('-')[1],i.value.toFloat(),-0xedcbaa))
+                                    series.addPoint(ValueLinePoint(i.key.split('-')[0]+'-'+i.key.split('-')[1],i.value.toFloat()))
                                 }
                             }
                             R.id.monthly -> {
                                 for(i in month){
                                     len+=135;
-                                    mBarChart.addBar(BarModel(i.key,i.value.toFloat(),-0xedcbaa))
-                                    series.addPoint(ValueLinePoint(i.key,i.value.toFloat()))
+                                    mBarChart.addBar(BarModel(i.key.split('-')[0],i.value.toFloat(),-0xedcbaa))
+                                    series.addPoint(ValueLinePoint(i.key.split('-')[0],i.value.toFloat()))
                                 }
                             }
                             R.id.yearly -> {

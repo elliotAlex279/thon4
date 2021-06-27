@@ -24,9 +24,10 @@ import java.text.SimpleDateFormat
 import java.util.*
 import androidx.annotation.NonNull
 import android.media.MediaPlayer
+import android.util.Log
+import org.json.JSONArray
 
 val addr = "https://27c8a621751a.ngrok.io";
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         fm.beginTransaction().add(R.id.main_container, fragment[2], "3").hide(fragment[2]).commit();
         fm.beginTransaction().add(R.id.main_container, fragment[1], "2").hide(fragment[1]).commit();
         fm.beginTransaction().add(R.id.main_container,fragment[0], "1").commit();
+
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
             bottomNav.setOnNavigationItemSelectedListener{ item ->

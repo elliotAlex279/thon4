@@ -5,10 +5,12 @@
       <map>
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/thon4/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="app/src/main/res/drawable/bg_chip.xml" value="0.10833333333333334" />
+        <entry key="app/src/main/res/drawable/circle.xml" value="0.13854166666666667" />
+        <entry key="app/src/main/res/drawable/profile_static.xml" value="0.13854166666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/estimate.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/estimate.xml" value="0.25" />
         <entry key="app/src/main/res/layout/home.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/profile.xml" value="0.12239583333333333" />
+        <entry key="app/src/main/res/layout/profile.xml" value="0.45" />
         <entry key="app/src/main/res/layout/summary.xml" value="0.375" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.12239583333333333" />
       </map>
