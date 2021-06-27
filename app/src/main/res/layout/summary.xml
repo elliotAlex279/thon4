@@ -181,7 +181,7 @@
                 <com.google.android.material.chip.Chip
                     android:id="@+id/get_data"
                     android:layout_gravity="end"
-                    android:text="Peak &amp; Nadir"
+                    android:text="Min &amp; Max"
                     app:chipBackgroundColor="@color/bg_chip"
                     app:chipStrokeColor="@color/stoke_chip"
                     app:chipStrokeWidth="1.5dp"

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
@@ -55,6 +56,8 @@ class Estimate : Fragment() {
                             view.findViewById<CardView>(R.id.est3).visibility = View.VISIBLE
                         }else{
                             Snackbar.make(view,"You're not earning anything",Snackbar.LENGTH_SHORT).show()
+                            ans[1].text = "Not Earning"
+                            ans[2].text = "-"
                         }
 
                     }catch (e : Exception){

@@ -22,7 +22,6 @@
             android:layout_gravity="end"
             app:fabSize="mini"
             android:id="@+id/clsD"
-            android:tint="@color/black2"
             android:elevation="0dp"
             app:backgroundTint="#000000FF"
             android:clickable="false"
@@ -31,7 +30,7 @@
             app:rippleColor="#000000FF"
             app:borderWidth="0dp"
             android:src="@drawable/ic_outline_close_24"
-            />
+            app:tint="@color/black2" />
     </GridLayout>
 
     <TableLayout
