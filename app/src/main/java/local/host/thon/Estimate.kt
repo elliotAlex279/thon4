@@ -1,5 +1,7 @@
 package local.host.thon
 
+import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.os.Bundle
 import android.os.StrictMode
 import android.util.Log
@@ -15,6 +17,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import org.json.JSONArray
@@ -23,6 +26,7 @@ import java.lang.Exception
 import java.util.*
 
 class Estimate : Fragment() {
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -56,6 +60,12 @@ class Estimate : Fragment() {
                             view.findViewById<CardView>(R.id.est3).visibility = View.VISIBLE
                         }else{
                             Snackbar.make(view,"You're not earning anything",Snackbar.LENGTH_SHORT).show()
+                            MaterialAlertDialogBuilder(view.context)
+                                .setMessage("You're not earning anything.")
+                                .setCancelable(true)
+                                .setNegativeButton("Close") { dialog, _ -> dialog.cancel() }
+                                .create()
+                                .show()
                             ans[1].text = "Not Earning"
                             ans[2].text = "-"
                         }
