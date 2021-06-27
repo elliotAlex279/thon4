@@ -116,7 +116,7 @@ class Summary : Fragment() {
                         val mBarChart = BarChart(view.context)
                         val mLineChart = ValueLineChart(view.context)
                         val series = ValueLineSeries()
-                        series.setColor(0xFF56B7F1.toInt());
+                        series.setColor(view.context.resources.getColor(R.color.light_red,null));
                         val ll =
                             LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 512)
                         var daydt = 0;
@@ -186,7 +186,7 @@ class Summary : Fragment() {
                         val mBarChart = BarChart(view.context)
                         val mLineChart = ValueLineChart(view.context)
                         val series = ValueLineSeries()
-                        series.setColor(0xFF56B7F1.toInt());
+                        series.setColor(view.context.resources.getColor(R.color.light_red,null));
                         val ll = LinearLayout.LayoutParams(2500, 512)
                         var daydt = 0;
                         val arr = JSONArray(response)
@@ -259,7 +259,7 @@ class Summary : Fragment() {
                         val mBarChart = BarChart(view.context)
                         val mLineChart = ValueLineChart(view.context)
                         val series = ValueLineSeries()
-                        series.setColor(0xFF56B7F1.toInt());
+                        series.setColor(view.context.resources.getColor(R.color.light_red,null));
                         val ll = LinearLayout.LayoutParams(4000, 512)
                         var daydt = 0;
                         val arr = JSONArray(response)
@@ -436,7 +436,7 @@ class Summary : Fragment() {
                             yearly[mn[2].format(ck.time)] = yearly[mn[2].format(ck.time)]!!.plus(diff)
                         }
                         val series = ValueLineSeries()
-                        series.setColor(0xFF56B7F1.toInt());
+                        series.setColor(view.context.resources.getColor(R.color.light_red,null));
                         when(one.checkedRadioButtonId){
                             R.id.daily -> {
                                 val cFm = SimpleDateFormat("E MMM d, yyyy")
