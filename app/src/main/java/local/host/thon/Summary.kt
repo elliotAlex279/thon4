@@ -144,7 +144,7 @@ class Summary : Fragment() {
                                 listMin.add(cFm.format(tmp.time))
                             }
                             tmp.add(Calendar.DATE,1)
-                            mBarChart.addBar(BarModel(week[dayOfWeek], daydt.toFloat(), R.color.light_red))
+                            mBarChart.addBar(BarModel(week[dayOfWeek], daydt.toFloat(), view.context.resources.getColor(R.color.light_red,null)))
                             series.addPoint(ValueLinePoint(week[dayOfWeek], daydt.toFloat()))
                             if (dayOfWeek == 7) dayOfWeek = 1;
                             else dayOfWeek++;
@@ -216,7 +216,7 @@ class Summary : Fragment() {
                                 BarModel(
                                     dtF.format(c.time),
                                     daydt.toFloat(),
-                                    R.color.light_red
+                                    view.context.resources.getColor(R.color.light_red,null)
                                 )
                             )
                             series.addPoint(ValueLinePoint(dtF.format(c.time), daydt.toFloat()))
@@ -289,7 +289,7 @@ class Summary : Fragment() {
                                 BarModel(
                                     dtF.format(c.time),
                                     daydt.toFloat(),
-                                    R.color.light_red
+                                    view.context.resources.getColor(R.color.light_red,null)
                                 )
                             )
                             series.addPoint(ValueLinePoint(dtF.format(c.time), daydt.toFloat()))
@@ -458,7 +458,7 @@ class Summary : Fragment() {
                                     if(min==i.value){
                                         listMin.add(cFm.format(cl.time))
                                     }
-                                    mBarChart.addBar(BarModel(i.key.split('-')[0]+'-'+i.key.split('-')[1],i.value.toFloat(),R.color.light_red))
+                                    mBarChart.addBar(BarModel(i.key.split('-')[0]+'-'+i.key.split('-')[1],i.value.toFloat(),view.context.resources.getColor(R.color.light_red,null)))
                                     series.addPoint(ValueLinePoint(i.key.split('-')[0]+'-'+i.key.split('-')[1],i.value.toFloat()))
                                 }
                             }
@@ -479,7 +479,7 @@ class Summary : Fragment() {
                                         listMin.add(i.key)
                                     }
                                     len+=135;
-                                    mBarChart.addBar(BarModel(i.key.split('-')[0],i.value.toFloat(),R.color.light_red))
+                                    mBarChart.addBar(BarModel(i.key.split('-')[0],i.value.toFloat(),view.context.resources.getColor(R.color.light_red,null)))
                                     series.addPoint(ValueLinePoint(i.key.split('-')[0],i.value.toFloat()))
                                 }
                             }
@@ -500,7 +500,7 @@ class Summary : Fragment() {
                                     if(min==i.value){
                                         listMin.add(i.key)
                                     }
-                                    mBarChart.addBar(BarModel(i.key,i.value.toFloat(),R.color.light_red))
+                                    mBarChart.addBar(BarModel(i.key,i.value.toFloat(),view.context.resources.getColor(R.color.light_red,null)))
                                     series.addPoint(ValueLinePoint(i.key,i.value.toFloat()))
                                 }
                             }
@@ -589,7 +589,7 @@ class Summary : Fragment() {
 
 //        val mBarChart = view.findViewById(R.id.barchart) as BarChart
 //        val mBarChart1 = view.findViewById(R.id.barchart1) as BarChart
-//        mBarChart.addBar(BarModel("A",0f, R.color.light_red))
+//        mBarChart.addBar(BarModel("A",0f, view.context.resources.getColor(R.color.light_red,null)))
 //        mBarChart.addBar(BarModel("A",2f, -0xcbcbaa))
 //        mBarChart.addBar(BarModel("A",3.3f, -0xa9cbaa))
 //        mBarChart.addBar(BarModel("A",1.1f, -0x78c0aa))
@@ -598,7 +598,7 @@ class Summary : Fragment() {
 //        mBarChart.addBar(BarModel("A",0.4f, -0xe00b54))
 //        mBarChart.addBar(BarModel("A",4f, -0xe45b1a))
 //        mBarChart.addBar(BarModel("A",4f, -0xe45b1a))
-//        mBarChart.addBar(BarModel("A",2.3f, R.color.light_red))
+//        mBarChart.addBar(BarModel("A",2.3f, view.context.resources.getColor(R.color.light_red,null)))
 //        mBarChart.addBar(BarModel("A",2f, -0xcbcbaa))
 //        mBarChart.addBar(BarModel("A",3.3f, -0xa9cbaa))
 //        mBarChart1.addBar(BarModel("A",1.1f, -0x78c0aa))
