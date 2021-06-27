@@ -435,6 +435,7 @@ class Summary : Fragment() {
                             if(!yearly.containsKey(mn[2].format(ck.time))) yearly[mn[2].format(ck.time)] = 0
                             yearly[mn[2].format(ck.time)] = yearly[mn[2].format(ck.time)]!!.plus(diff)
                         }
+
                         val series = ValueLineSeries()
                         series.setColor(view.context.resources.getColor(R.color.light_red,null));
                         when(one.checkedRadioButtonId){
