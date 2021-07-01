@@ -6,10 +6,12 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/thon4/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="app/src/main/res/drawable/chip_outline.xml" value="0.371875" />
         <entry key="app/src/main/res/drawable/chip_outline_selected.xml" value="0.371875" />
+        <entry key="app/src/main/res/drawable/profile_static.xml" value="0.2140625" />
         <entry key="app/src/main/res/drawable/selector_tab.xml" value="0.371875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.14791666666666667" />
         <entry key="app/src/main/res/layout/estimate.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment1.xml" value="0.11343399148277197" />
+        <entry key="app/src/main/res/layout/fragment1.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment2.xml" value="0.15260416666666668" />
         <entry key="app/src/main/res/layout/fragment3.xml" value="0.15260416666666668" />
         <entry key="app/src/main/res/layout/home.xml" value="0.335" />

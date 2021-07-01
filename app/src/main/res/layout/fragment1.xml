@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 tools:ignore="SmallSp" />
             <TextView
-                android:text="Chapli"
+                android:text="Chaman"
                 android:textSize="12sp"
                 android:textColor="@color/black2"
                 android:paddingVertical="4dp"
@@ -123,7 +123,7 @@
                     android:scrollHorizontally="true"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
-                    android:text="Gokuldham Society,Powder Gali,Mumbai"
+                    android:text="Rajkot, Gujarat"
                     android:textSize="12sp"
                     android:textColor="@color/black2"
                     android:paddingVertical="4dp"
@@ -202,7 +202,7 @@
                     android:layout_height="wrap_content"
                     tools:ignore="SmallSp" />
                 <TextView
-                    android:text="Jethalal Gada"
+                    android:text="Harsh Makadiya"
                     android:textSize="12sp"
                     android:textColor="@color/black2"
                     android:paddingVertical="4dp"

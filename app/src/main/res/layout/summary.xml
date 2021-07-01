@@ -113,7 +113,7 @@
                                    android:layout_gravity="center"
                                    android:id="@+id/yearly"
                                    android:layout_weight="1"
-                                   android:text="Yeraly"
+                                   android:text="Yearly"
                                    android:layout_width="wrap_content"
                                    android:layout_height="wrap_content"/>
                            </RadioGroup>

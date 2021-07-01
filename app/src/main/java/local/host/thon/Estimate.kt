@@ -49,29 +49,38 @@ class Estimate : Fragment() {
                 pre1.text = avg_units.toString()
                 val ans = arrayOf(view.findViewById<TextView>(R.id.ans1),view.findViewById<TextView>(R.id.ans2),view.findViewById<TextView>(R.id.ans3))
                 ans[0].text = "2"
+                view.findViewById<TextView>(R.id.ans0).text = "7"
                 btn1.setOnClickListener {
                     val x = view.findViewById<TextInputEditText>(R.id.inp1)
                     try{
                         val k = x.text.toString().toFloat()
-                        if(pre1.text.toString().toFloat()>k){
-                            val m = ((avg_units - x.text.toString().toFloat())  * 30F * 2F)
-                            ans[1].text = m.toString()
-                            ans[2].text = (70000F/m).toInt().toString()
+                        if(pre1.text.toString().toFloat()>=k){
+                            val m = (k*7F*30F + (avg_units - x.text.toString().toFloat())  * 30F * 2F)
+                            val st = m.toString().split('.')
+                            ans[1].text = st[0] +"."+ st[1].subSequence(0,2)
+                            ans[2].text = (30000F/m).toInt().toString()
                             view.findViewById<CardView>(R.id.est3).visibility = View.VISIBLE
+                            view.findViewById<TextView>(R.id.h1).text = "Monthly Earning (approx)"
+                            view.findViewById<TextView>(R.id.h2).text = "ETRI"
                         }else{
-                            Snackbar.make(view,"You're not earning anything",Snackbar.LENGTH_SHORT).show()
-                            MaterialAlertDialogBuilder(view.context)
-                                .setMessage("You're not earning anything.")
-                                .setCancelable(true)
-                                .setNegativeButton("Close") { dialog, _ -> dialog.cancel() }
-                                .create()
-                                .show()
-                            ans[1].text = "Not Earning"
-                            ans[2].text = "-"
+                            view.findViewById<TextView>(R.id.h1).text = "Estimated Bill"
+                            view.findViewById<TextView>(R.id.h2).text = "Saved Amount"
+                            val m = (x.text.toString().toFloat() - avg_units)*7F*30F
+                            val st = m.toString().split('.')
+                            ans[1].text = st[0] +"."+ st[1].subSequence(0,2)
+                            val km = (avg_units*7F*30F).toString().split('.')
+                            ans[2].text = km[0] + "." + km[1].subSequence(0,2)
+                            view.findViewById<CardView>(R.id.est3).visibility = View.VISIBLE
                         }
-
                     }catch (e : Exception){
-                        Snackbar.make(view,"Value is must needed thing in this calculation",Snackbar.LENGTH_SHORT).show()
+                        MaterialAlertDialogBuilder(view.context)
+                            .setTitle("Empty Input")
+                            .setCancelable(true)
+                            .setMessage("Please enter value in given field.")
+                            .setNegativeButton("Close"){d,k->
+                                d.dismiss()
+                            }
+                            .show()
                     }
                 }
             },{})

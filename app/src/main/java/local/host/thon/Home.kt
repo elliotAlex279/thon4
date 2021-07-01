@@ -225,6 +225,8 @@ class Home : Fragment() {
                     crd.text = (lastDayFinal+tot).toString()
                     prg2.visibility = View.GONE
                     crd.visibility = View.VISIBLE
+                    view.findViewById<ProgressBar>(R.id.expt_curGen_prg).visibility = View.GONE
+                    view.findViewById<TextView>(R.id.expt_unit_gen).visibility = View.VISIBLE
                 },{err->Snackbar.make(view,err.toString(),Snackbar.LENGTH_SHORT).show()})
             queue.add(stringRequest)
 
@@ -265,6 +267,8 @@ class Home : Fragment() {
                     crd.text = (lastDayFinal+tot).toString()
                     prg2.visibility = View.GONE
                     crd.visibility = View.VISIBLE
+                    view.findViewById<ProgressBar>(R.id.expt_curGen_prg).visibility = View.GONE
+                    view.findViewById<TextView>(R.id.expt_unit_gen).visibility = View.VISIBLE
                     Snackbar.make(view,"Current Generation Updated",Snackbar.LENGTH_SHORT).show()
                 },{err->Snackbar.make(view,err.toString(),Snackbar.LENGTH_SHORT).show()})
             queue.add(stringRequestK)

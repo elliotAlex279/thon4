@@ -27,7 +27,7 @@
                 android:id="@+id/profile_image"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
-                android:src="@drawable/jetho"
+                android:src="@drawable/john"
                 app:civ_border_width="2dp"
                 app:civ_border_color="#000000FF"/>
             <LinearLayout
@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">
                 <TextView
-                    android:text="Jethalal C. Gada"
+                    android:text="Paul Henry"
                     android:textSize="18sp"
                     android:textColor="@color/black2"
                     android:layout_width="wrap_content"
