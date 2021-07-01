@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
-            android:text="Cambiar la contraseña"
+            android:text="Change Password"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
     </GridLayout>
 </LinearLayout>
