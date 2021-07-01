@@ -39,7 +39,6 @@ class Estimate : Fragment() {
         val btn1 = view.findViewById<MaterialButton>(R.id.cal_btn1)
         val pre1 = view.findViewById<TextView>(R.id.cal1)
         val queue = Volley.newRequestQueue(view.context)
-
         val stringRequest = StringRequest(
             Request.Method.GET, "${addr}/ave",
             { response ->
