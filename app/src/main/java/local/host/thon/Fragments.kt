@@ -30,7 +30,7 @@ class Fragment2 : Fragment() {
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
         super.onCreate(savedInstanceState)
-        val view =  inflater.inflate(R.layout.fragment1, container, false)
+        val view =  inflater.inflate(R.layout.fragment2, container, false)
         return view
     }
 }
@@ -43,7 +43,7 @@ class Fragment3 : Fragment() {
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
         super.onCreate(savedInstanceState)
-        val view =  inflater.inflate(R.layout.fragment1, container, false)
+        val view =  inflater.inflate(R.layout.fragment3, container, false)
         return view
     }
 }
