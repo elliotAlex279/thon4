@@ -13,6 +13,7 @@
         android:layout_height="match_parent"
         tools:context="MainActivity"
         app:layout_constraintBottom_toTopOf="@id/navigation"
+        android:layout_marginBottom="105dp"
         android:id="@+id/main_container">
 
     </FrameLayout>
